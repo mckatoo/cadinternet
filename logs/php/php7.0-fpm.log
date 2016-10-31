@@ -1,0 +1,113 @@
+[25-Oct-2016 18:16:13] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[25-Oct-2016 18:16:13] NOTICE: fpm is running, pid 78
+[25-Oct-2016 18:16:13] NOTICE: ready to handle connections
+[25-Oct-2016 18:16:13] NOTICE: systemd monitor interval set to 10000ms
+[26-Oct-2016 17:26:25] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[26-Oct-2016 17:26:25] NOTICE: fpm is running, pid 105
+[26-Oct-2016 17:26:25] NOTICE: ready to handle connections
+[26-Oct-2016 17:26:25] NOTICE: systemd monitor interval set to 10000ms
+[26-Oct-2016 17:49:16] NOTICE: Terminating ...
+[26-Oct-2016 17:49:16] NOTICE: exiting, bye-bye!
+[26-Oct-2016 17:49:16] NOTICE: fpm is running, pid 515
+[26-Oct-2016 17:49:16] NOTICE: ready to handle connections
+[26-Oct-2016 17:49:16] NOTICE: systemd monitor interval set to 10000ms
+[26-Oct-2016 19:16:58] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[26-Oct-2016 19:16:58] NOTICE: fpm is running, pid 80
+[26-Oct-2016 19:16:58] NOTICE: ready to handle connections
+[26-Oct-2016 19:16:58] NOTICE: systemd monitor interval set to 10000ms
+[26-Oct-2016 22:14:28] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[26-Oct-2016 22:14:28] NOTICE: fpm is running, pid 82
+[26-Oct-2016 22:14:28] NOTICE: ready to handle connections
+[26-Oct-2016 22:14:28] NOTICE: systemd monitor interval set to 10000ms
+[27-Oct-2016 16:17:32] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[27-Oct-2016 16:17:32] NOTICE: fpm is running, pid 122
+[27-Oct-2016 16:17:32] NOTICE: ready to handle connections
+[27-Oct-2016 16:17:32] NOTICE: systemd monitor interval set to 10000ms
+[28-Oct-2016 16:12:53] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[28-Oct-2016 16:12:53] NOTICE: fpm is running, pid 77
+[28-Oct-2016 16:12:53] NOTICE: ready to handle connections
+[28-Oct-2016 16:12:53] NOTICE: systemd monitor interval set to 10000ms
+[28-Oct-2016 18:07:05] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[28-Oct-2016 18:07:05] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+[28-Oct-2016 18:07:05] ERROR: An another FPM instance seems to already listen on /run/php/php7.0-fpm.sock
+[28-Oct-2016 18:07:05] ERROR: FPM initialization failed
+[28-Oct-2016 18:09:10] NOTICE: Terminating ...
+[28-Oct-2016 18:09:10] NOTICE: exiting, bye-bye!
+[28-Oct-2016 18:09:10] NOTICE: fpm is running, pid 236
+[28-Oct-2016 18:09:10] NOTICE: ready to handle connections
+[28-Oct-2016 18:09:10] NOTICE: systemd monitor interval set to 10000ms
+[29-Oct-2016 12:15:08] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[29-Oct-2016 12:15:08] NOTICE: fpm is running, pid 104
+[29-Oct-2016 12:15:08] NOTICE: ready to handle connections
+[29-Oct-2016 12:15:08] NOTICE: systemd monitor interval set to 10000ms
+[29-Oct-2016 14:44:15] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[29-Oct-2016 14:44:15] NOTICE: fpm is running, pid 91
+[29-Oct-2016 14:44:15] NOTICE: ready to handle connections
+[29-Oct-2016 14:44:15] NOTICE: systemd monitor interval set to 10000ms
+[29-Oct-2016 14:53:55] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[29-Oct-2016 14:53:55] NOTICE: fpm is running, pid 77
+[29-Oct-2016 14:53:55] NOTICE: ready to handle connections
+[29-Oct-2016 14:53:55] NOTICE: systemd monitor interval set to 10000ms
+[29-Oct-2016 14:55:19] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[29-Oct-2016 14:55:20] ERROR: An another FPM instance seems to already listen on /run/php/php7.0-fpm.sock
+[29-Oct-2016 14:55:20] ERROR: FPM initialization failed
+[29-Oct-2016 15:03:12] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[29-Oct-2016 15:03:12] NOTICE: fpm is running, pid 168
+[29-Oct-2016 15:03:12] NOTICE: ready to handle connections
+[29-Oct-2016 15:03:12] NOTICE: systemd monitor interval set to 10000ms
+[29-Oct-2016 15:28:40] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[29-Oct-2016 15:28:40] NOTICE: fpm is running, pid 80
+[29-Oct-2016 15:28:40] NOTICE: ready to handle connections
+[29-Oct-2016 15:28:40] NOTICE: systemd monitor interval set to 10000ms
+[29-Oct-2016 16:57:30] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[29-Oct-2016 16:57:30] NOTICE: fpm is running, pid 81
+[29-Oct-2016 16:57:30] NOTICE: ready to handle connections
+[29-Oct-2016 16:57:30] NOTICE: systemd monitor interval set to 10000ms
+[30-Oct-2016 14:17:51] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[30-Oct-2016 14:17:51] NOTICE: fpm is running, pid 82
+[30-Oct-2016 14:17:51] NOTICE: ready to handle connections
+[30-Oct-2016 14:17:51] NOTICE: systemd monitor interval set to 10000ms
+[31-Oct-2016 03:20:50] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[31-Oct-2016 03:20:50] NOTICE: fpm is running, pid 82
+[31-Oct-2016 03:20:50] NOTICE: ready to handle connections
+[31-Oct-2016 03:20:50] NOTICE: systemd monitor interval set to 10000ms
+[31-Oct-2016 04:07:42] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[31-Oct-2016 04:07:42] NOTICE: fpm is running, pid 451
+[31-Oct-2016 04:07:42] NOTICE: ready to handle connections
+[31-Oct-2016 04:07:42] NOTICE: systemd monitor interval set to 10000ms
+[31-Oct-2016 04:09:16] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[31-Oct-2016 04:09:16] NOTICE: fpm is running, pid 80
+[31-Oct-2016 04:09:16] NOTICE: ready to handle connections
+[31-Oct-2016 04:09:16] NOTICE: systemd monitor interval set to 10000ms
+[31-Oct-2016 04:10:30] NOTICE: Terminating ...
+[31-Oct-2016 04:10:30] NOTICE: exiting, bye-bye!
+[31-Oct-2016 04:10:30] NOTICE: fpm is running, pid 151
+[31-Oct-2016 04:10:30] NOTICE: ready to handle connections
+[31-Oct-2016 04:10:30] NOTICE: systemd monitor interval set to 10000ms
+[31-Oct-2016 04:13:33] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[31-Oct-2016 04:13:33] NOTICE: fpm is running, pid 112
+[31-Oct-2016 04:13:33] NOTICE: ready to handle connections
+[31-Oct-2016 04:13:33] NOTICE: systemd monitor interval set to 10000ms
+[31-Oct-2016 04:32:53] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[31-Oct-2016 04:32:53] NOTICE: fpm is running, pid 81
+[31-Oct-2016 04:32:53] NOTICE: ready to handle connections
+[31-Oct-2016 04:32:53] NOTICE: systemd monitor interval set to 10000ms
