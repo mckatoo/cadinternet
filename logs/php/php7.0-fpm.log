@@ -126,3 +126,8 @@
 [01-Nov-2016 02:19:03] NOTICE: fpm is running, pid 80
 [01-Nov-2016 02:19:03] NOTICE: ready to handle connections
 [01-Nov-2016 02:19:04] NOTICE: systemd monitor interval set to 10000ms
+[01-Nov-2016 14:12:40] NOTICE: configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful
+
+[01-Nov-2016 14:12:40] NOTICE: fpm is running, pid 80
+[01-Nov-2016 14:12:40] NOTICE: ready to handle connections
+[01-Nov-2016 14:12:40] NOTICE: systemd monitor interval set to 10000ms

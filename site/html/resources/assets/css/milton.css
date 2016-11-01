@@ -2,10 +2,10 @@
     text-transform: uppercase;
 }
 
-a:hover{
+/*a:hover{
     cursor: pointer;
     text-decoration: none;
-}
+}*/
 
 .navbar-brand{
     background-image: url('/img/navbar-brand.png');

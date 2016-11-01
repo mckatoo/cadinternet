@@ -61,10 +61,12 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <form action="{{ url('logout') }}" method="post" enctype="multipart/form-data" id="logout">
+                        {{-- <form action="{{ url('logout') }}" method="post" enctype="multipart/form-data" id="logout">
                             {{csrf_field()}}
-                            <li><a onclick="$('#logout').submit();"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
-                        </form>
+                            <li><a href="#" onclick="$('#logout').submit();"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                        </form> --}}
+                        <li><a href="#" onclick="$.post({{ url('logout') }}">
+                            <i class="fa fa-sign-out fa-fw"></i> Sair</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
