@@ -18,4 +18,6 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
+Route::post('/logout', 'Auth\LoginController@logout');
+
 Route::get('/home', 'HomeController@index');

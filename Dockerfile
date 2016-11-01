@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y \
         sudo \
         vim \
         wget \
+        zip \
+        unzip \
     && bash -c "ln -s /usr/bin/nodejs /usr/bin/node" \
     && npm install -g bower \
     && npm install -g gulp \
