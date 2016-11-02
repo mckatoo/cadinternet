@@ -8,3 +8,4 @@ Homestead.yaml
 site/html/vendor
 site/html/storage
 site/html/node_modules
+/logs
