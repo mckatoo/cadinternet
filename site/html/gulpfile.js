@@ -19,6 +19,14 @@ elixir(function(mix) {
         './resources/assets/metisMenu/metisMenu.min.css',
         './resources/assets/css/sb-admin-2.css',
         './resources/assets/css/milton.css',
+        './resources/assets/datatables-plugins/dataTables.bootstrap.css',
+        './resources/assets/datatables-responsive/dataTables.responsive.css',
+    ], 'public/css/admtables.css'),
+    mix.styles([
+        './resources/assets/bootstrap/css/bootstrap.min.css',
+        './resources/assets/metisMenu/metisMenu.min.css',
+        './resources/assets/css/sb-admin-2.css',
+        './resources/assets/css/milton.css',
         './resources/assets/morrisjs/morris.css',
     ], 'public/css/adm.css'),
     mix.styles([
@@ -30,6 +38,16 @@ elixir(function(mix) {
         './resources/assets/css/sb-admin-2.css',
         './resources/assets/css/milton.css',
     ], 'public/css/app.css'),
+    mix.scripts([
+        './resources/assets/jquery/jquery.min.js',
+        './resources/assets/bootstrap/js/bootstrap.min.js',
+        './resources/assets/metisMenu/metisMenu.min.js',
+        './resources/assets/datatables/js/jquery.dataTables.min.js',
+        './resources/assets/datatables-plugins/dataTables.bootstrap.min.js',
+        './resources/assets/datatables-responsive/dataTables.responsive.js',
+        './resources/assets/js/sb-admin-2.js',
+        './resources/assets/js/milton.js',
+    ], 'public/js/admtables.js'),
     mix.scripts([
         './resources/assets/jquery/jquery.min.js',
         './resources/assets/bootstrap/js/bootstrap.min.js',
@@ -50,5 +68,7 @@ elixir(function(mix) {
         "js/app.js",
         "css/adm.css",
         "js/adm.js",
+        "css/admtables.css",
+        "js/admtables.js",
     ]);
 });
