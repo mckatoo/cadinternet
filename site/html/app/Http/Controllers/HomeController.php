@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $requisicoes = \App\Requisicoes::with('campus')->with('status')->with('tipo')->get();
+        return view('home',compact('requisicoes'));
     }
 }

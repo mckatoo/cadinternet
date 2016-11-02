@@ -1,6 +1,8 @@
 {
-  "css/adm.css": "css/adm-6d22677c2e.css",
-  "css/app.css": "css/app-861e04e194.css",
-  "js/adm.js": "js/adm-2b1268c39e.js",
-  "js/app.js": "js/app-1d10f5b76f.js"
+  "css/adm.css": "css/adm-36bb42b5b0.css",
+  "css/admtables.css": "css/admtables-51fc9bae49.css",
+  "css/app.css": "css/app-7421f868eb.css",
+  "js/adm.js": "js/adm-c6932fab45.js",
+  "js/admtables.js": "js/admtables-fa57c16265.js",
+  "js/app.js": "js/app-5494ce601f.js"
 }

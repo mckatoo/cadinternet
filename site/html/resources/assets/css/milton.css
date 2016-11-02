@@ -2,10 +2,10 @@
     text-transform: uppercase;
 }
 
-/*a:hover{
-    cursor: pointer;
-    text-decoration: none;
-}*/
+.centro-total{
+    text-align: center;
+    vertical-align: middle;
+}
 
 .navbar-brand{
     background-image: url('/img/navbar-brand.png');
@@ -13,4 +13,12 @@
     background-position: center;
     width: 150px;
     height: 50px;
+}
+
+.navbar-top-links li a{
+    color: #337ab7;
+}
+
+.verde{
+    color: #449D44;
 }
