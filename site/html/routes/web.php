@@ -21,3 +21,8 @@ Auth::routes();
 Route::post('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['as' => 'cadastros.', 'prefix' => 'cadastros'], function()
+{
+    Route::get('/pesquisa/status/{status_id?}', ['as' => 'PorStatus', 'uses' => 'RequisicoesController@PorStatus']);
+});

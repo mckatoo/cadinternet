@@ -23,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $requisicoes = \App\Requisicoes::with('campus')->with('status')->with('tipo')->get();
-        return view('home',compact('requisicoes'));
+        $titulo = 'Cadastros Pendentes';
+        $requisicoes = \App\Requisicoes::where('status_id', '1')->get();
+        return view('home',compact('requisicoes','titulo'));
     }
 }

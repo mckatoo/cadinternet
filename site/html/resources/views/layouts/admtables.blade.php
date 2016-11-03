@@ -113,6 +113,11 @@
 
 
         @yield('content')
+        <div class="bg-gradient">
+        </div>
+        <div class="loading">
+            AGUARDE...
+        </div>
 
     </div>
     <!-- /#wrapper -->
