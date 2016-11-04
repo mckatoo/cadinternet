@@ -50,7 +50,7 @@ class RequisicoesController extends Controller
         if ($tipo == null) {
             $requisicoes = \App\Requisicoes::get();
         } else {
-            $requisicoes = \App\Requisicoes::where('tipo', $tipo);
+            $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tipo)->get();
         }
 
         return view('cadastros.tipo',compact('requisicoes','titulo'));

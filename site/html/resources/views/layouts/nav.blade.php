@@ -21,10 +21,6 @@
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Mudar Senha</a>
                 </li>
                 <li class="divider"></li>
-                {{-- <form action="{{ url('logout') }}" method="post" enctype="multipart/form-data" id="logout">
-                    {{csrf_field()}}
-                    <li><a href="#" onclick="$('#logout').submit();"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
-                </form> --}}
                 <li><a href="#" onclick="$.post({{ url('logout') }}">
                     <i class="fa fa-sign-out fa-fw"></i> Sair</a>
                 </li>
@@ -50,19 +46,19 @@
                     <!-- /input-group -->
                 </li>
                 <li>
-                    <a href="{{ route('home') }}"><i class="fa fa-home fa-fw"></i> Principal</a>
+                    <a href="{{ route('home') }}" id="Principal" class="itemenu active"><i class="fa fa-home fa-fw"></i> Principal</a>
                 </li>
                 <li>
-                    <a href="#" id="tipoAluno"><i class="fa fa-pencil fa-fw"></i> Alunos</a>
+                    <a href="#" id="tipoAluno" class="itemenu"><i class="fa fa-pencil fa-fw"></i> Alunos</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-graduation-cap fa-fw"></i> Professores</a>
+                    <a href="#" id="tipoProfessor" class="itemenu"><i class="fa fa-graduation-cap fa-fw"></i> Professores</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-user fa-fw"></i> Funcionários</a>
+                    <a href="#" id="tipoFuncionario" class="itemenu"><i class="fa fa-user fa-fw"></i> Funcionários</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-user fa-fw"></i> Configurações</a>
+                    <a href="#" id="Configuracoes" class="itemenu"><i class="fa fa-user fa-fw"></i> Configurações</a>
                 </li>
             </ul>
         </div>

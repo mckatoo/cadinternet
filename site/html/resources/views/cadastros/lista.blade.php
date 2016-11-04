@@ -42,7 +42,7 @@
                                 @endif
                             </td>
                             <td class="centro-total">{{$req->tipo->tipo}}</td>
-                            <td class="centro-total">{{date('d/m/Y H:m', strtotime($req->created_at))}}</td>
+                            <td class="centro-total">{{date('d/m/Y H:i', strtotime($req->created_at))}}</td>
                             <td class="centro-total">
                                 @if ($req->status->status == 'PENDENTE')
                                     <a href="#" class="btn btn-xs btn-primary">
