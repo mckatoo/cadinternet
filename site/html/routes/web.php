@@ -20,9 +20,11 @@ Auth::routes();
 
 Route::post('/logout', 'Auth\LoginController@logout');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home',['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::group(['as' => 'cadastros.', 'prefix' => 'cadastros'], function()
 {
     Route::get('/pesquisa/status/{status_id?}', ['as' => 'PorStatus', 'uses' => 'RequisicoesController@PorStatus']);
+    Route::get('/conta/{campo}/{valor}', ['as' => 'conta', 'uses' => 'RequisicoesController@Conta']);
+    Route::get('/tipo/{tipo}', ['as' => 'tipo', 'uses' => 'RequisicoesController@PorTipo']);
 });

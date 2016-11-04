@@ -1,7 +1,7 @@
 @extends('layouts.admtables')
 
 @section('content')
-    <div id="page-wrapper">
+    <div id="page-wrapper" class="conteudo">
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-primary">
@@ -11,7 +11,7 @@
                                 <i class="fa fa-thumbs-up fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">26</div>
+                                <div class="huge contaOK">{{ $conta['OK'] }}</div>
                                 <div>OK!</div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                                 <i class="fa fa-edit fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">124</div>
+                                <div class="huge contaOK">{{ $conta['CADASTRANDO'] }}</div>
                                 <div>Cadastrando...</div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                 <i class="fa fa-thumbs-o-down fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
+                                <div class="huge contaOK">{{ $conta['PENDENTES'] }}</div>
                                 <div>Pendentes...</div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                 <i class="fa fa-list-alt fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">12</div>
+                                <div class="huge contaOK">{{ $conta['TODOS'] }}</div>
                                 <div>Todos!</div>
                             </div>
                         </div>

@@ -27,6 +27,38 @@ class RequisicoesController extends Controller
         } else {
             $requisicoes = \App\Requisicoes::where('status_id', $status_id)->get();
         }
+
         return view('cadastros.lista',compact('requisicoes','titulo'));
+    }
+
+    public function PorTipo($tipo = null)
+    {
+        switch ($tipo) {
+            case '1':
+                $titulo = 'Alunos';
+                break;
+            case '2':
+                $titulo = 'Professores';
+                break;
+            case '3':
+                $titulo = 'Funcionários';
+                break;
+            default:
+                $titulo = 'Todos Cadastros';
+                break;
+        }
+        if ($tipo == null) {
+            $requisicoes = \App\Requisicoes::get();
+        } else {
+            $requisicoes = \App\Requisicoes::where('tipo', $tipo);
+        }
+
+        return view('cadastros.tipo',compact('requisicoes','titulo'));
+    }
+
+    public function Conta($campo, $valor)
+    {
+        $requisicoes = \App\Requisicoes::where($campo, $valor)->count();
+        dd($requisicoes);
     }
 }

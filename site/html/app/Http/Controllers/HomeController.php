@@ -25,6 +25,12 @@ class HomeController extends Controller
     {
         $titulo = 'Cadastros Pendentes';
         $requisicoes = \App\Requisicoes::where('status_id', '1')->get();
-        return view('home',compact('requisicoes','titulo'));
+        $conta = [
+            "OK" => \App\Requisicoes::where('status_id','3')->count(),
+            "CADASTRANDO" => \App\Requisicoes::where('status_id','2')->count(),
+            "PENDENTES" => \App\Requisicoes::where('status_id','1')->count(),
+            "TODOS" => \App\Requisicoes::count(),
+        ];
+        return view('home',compact('requisicoes','titulo','conta'));
     }
 }
