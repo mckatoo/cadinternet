@@ -86,7 +86,7 @@
         <h4 class="modal-title" id="">Cadastrar {{$titulo}}</h4>
       </div>
       <div class="modal-body">
-
+          @include('cadastros.form')
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

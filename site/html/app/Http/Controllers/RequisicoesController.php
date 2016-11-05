@@ -53,12 +53,12 @@ class RequisicoesController extends Controller
             $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tipo)->get();
         }
 
-        return view('cadastros.tipo',compact('requisicoes','titulo'));
+        $campus = \App\Campus::get();
+        return view('cadastros.tipo',compact('requisicoes','titulo','campus'));
     }
 
     public function Conta($campo, $valor)
     {
         $requisicoes = \App\Requisicoes::where($campo, $valor)->count();
-        dd($requisicoes);
     }
 }

@@ -28,3 +28,8 @@ Route::group(['as' => 'cadastros.', 'prefix' => 'cadastros'], function()
     Route::get('/conta/{campo}/{valor}', ['as' => 'conta', 'uses' => 'RequisicoesController@Conta']);
     Route::get('/tipo/{tipo}', ['as' => 'tipo', 'uses' => 'RequisicoesController@PorTipo']);
 });
+
+Route::group(['as' => 'campus.', 'prefix' => 'campus'], function()
+{
+    Route::get('/lista', ['as' => 'lista', 'uses' => 'CampusController@lista']);
+});
