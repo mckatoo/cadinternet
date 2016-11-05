@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UsuarioTipo;
+use Symfony\Component\VarDumper\Cloner\VarCloner;
 
 class RequisicoesController extends Controller
 {
@@ -54,11 +56,22 @@ class RequisicoesController extends Controller
         }
 
         $campus = \App\Campus::get();
-        return view('cadastros.tipo',compact('requisicoes','titulo','campus'));
+        $utipo = \App\UsuarioTipo::get();
+        return view('cadastros.tipo',compact('requisicoes','titulo','campus','utipo'));
     }
 
-    public function Conta($campo, $valor)
+    public function Salvar(Request $request)
     {
-        $requisicoes = \App\Requisicoes::where($campo, $valor)->count();
+        $tipo = Input::get('tipo');
+        $req = new \App\Requisicoes;
+        $req->nome = Input::get('nome');
+        $req->rarefunc = Input::get('rarefunc');
+        $req->ip = Input::get('IP');
+        $req->MAC = Input::get('MAC');
+        $req->campus_id = Input::get('campus');
+        $req->usuarioTipo_id = $tipo;
+        $req->save();
+        PorTipo($tipo);
     }
+
 }

@@ -40,6 +40,7 @@ elixir(function(mix) {
     ], 'public/css/app.css'),
     mix.scripts([
         './resources/assets/jquery/jquery.min.js',
+        './resources/assets/jquery/jquery.mask.min.js',
         './resources/assets/bootstrap/js/bootstrap.min.js',
         './resources/assets/metisMenu/metisMenu.min.js',
         './resources/assets/datatables/js/jquery.dataTables.min.js',
@@ -50,6 +51,7 @@ elixir(function(mix) {
     ], 'public/js/admtables.js'),
     mix.scripts([
         './resources/assets/jquery/jquery.min.js',
+        './resources/assets/jquery/jquery.mask.min.js',
         './resources/assets/bootstrap/js/bootstrap.min.js',
         './resources/assets/metisMenu/metisMenu.min.js',
         './resources/assets/raphael/raphael.min.js',
@@ -59,6 +61,7 @@ elixir(function(mix) {
     ], 'public/js/adm.js'),
     mix.scripts([
         './resources/assets/jquery/jquery.min.js',
+        './resources/assets/jquery/jquery.mask.min.js',
         './resources/assets/bootstrap/js/bootstrap.min.js',
         './resources/assets/metisMenu/metisMenu.min.js',
         './resources/assets/js/sb-admin-2.js',

@@ -88,10 +88,10 @@
       <div class="modal-body">
           @include('cadastros.form')
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Cadastrar</button>
-      </div>
+      {{-- <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button class="btn btn-primary">Cadastrar</button>
+      </div> --}}
     </div>
   </div>
 </div>
