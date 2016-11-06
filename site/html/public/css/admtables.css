@@ -540,6 +540,10 @@ table.dataTable thead .sorting:after {
 	font-weight: bold;
 }
 
+.form-control{
+    text-transform: uppercase;
+}
+
 div.dataTables_length label {
 	font-weight: normal;
 	text-align: left;

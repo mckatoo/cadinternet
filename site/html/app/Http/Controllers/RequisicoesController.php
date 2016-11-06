@@ -62,16 +62,28 @@ class RequisicoesController extends Controller
 
     public function Salvar(Request $request)
     {
-        $tipo = Input::get('tipo');
+        $tipo = $request->input('tipo');
         $req = new \App\Requisicoes;
-        $req->nome = Input::get('nome');
-        $req->rarefunc = Input::get('rarefunc');
-        $req->ip = Input::get('IP');
-        $req->MAC = Input::get('MAC');
-        $req->campus_id = Input::get('campus');
-        $req->usuarioTipo_id = $tipo;
+        $req->nome = $request->input('nome');
+        $req->rarefunc = $request->input('rarefunc');
+        $req->ip = $request->input('IP');
+        $req->MAC = $request->input('MAC');
+        $req->campus_id = $request->input('campus');
+        switch ($request->input('tipo')) {
+            case 'Professores':
+                $tp = 2;
+                break;
+            case 'Funcionários':
+                $tp = 3;
+                break;
+            default:
+                $tp = 1;
+                break;
+        }
+        $req->usuarioTipo_id = $tp;
         $req->save();
-        PorTipo($tipo);
+        // return redirect()->action('RequisicoesController@PorStatus', $tp)->with('mensagem','Cadastrado com sucesso!!!');
+        // return redirect()->route('cadastros.tipo',[$tp])->with('mensagem','Cadastrado com sucesso!!!');
     }
 
 }

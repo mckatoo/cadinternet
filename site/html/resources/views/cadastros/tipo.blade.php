@@ -6,11 +6,14 @@
                     Cadastros de {{$titulo}}
                 </h4>
                 <div class="pull-right painel-com-botao">
-                    <button type="button" data-toggle="modal" data-target="#novo" class="btn btn-primary">
+                    <button type="button" data-toggle="modal" data-target="#novo" class="btn btn-primary" id="btnNovo">
                         <i class="fa fa-plus"></i> Novo Cadastro
                     </button>
                 </div>
             </div>
+            @if (isset($mensagem))
+                <div class="alert alert-success">{{$mensagem}}</div>
+            @endif
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
@@ -88,10 +91,10 @@
       <div class="modal-body">
           @include('cadastros.form')
       </div>
-      {{-- <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button class="btn btn-primary">Cadastrar</button>
-      </div> --}}
+      <div class="modal-footer">
+        <button id="btnFechar" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button id="btnCadastrar" class="btn btn-primary">Cadastrar</button>
+      </div>
     </div>
   </div>
 </div>
@@ -110,4 +113,25 @@ $(document).ready(function() {
         });
     }
 });
+
+$('#btnNovo').on('click', function(){
+    var formulario = document.querySelector("#formCadastros");
+    formulario.setAttribute("action", "cadastros/salvar");
+});
+
+$('#btnFechar').on('click', function(){
+    $('.form-horizontal')[0].reset();
+});
+
+$('#btnCadastrar').on('click', function(){
+    $.post("cadastros/salvar", $( ".form-horizontal" ).serialize());
+    $(".conteudo").load("cadastros/tipo/3");
+    $('.modal-backdrop').fadeOut(1000);
+    $('.bg-gradient').fadeOut(1000);
+    $('.loading').fadeOut(1000);
+});
+
+setTimeout(function(){
+  $('.alert').fadeIn();
+}, 3000);
 </script>

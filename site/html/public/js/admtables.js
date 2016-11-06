@@ -1209,13 +1209,4 @@ $('#tipoFuncionario').on('click', function(){
     fadeout();
 });
 
-$('.form-horizontal').submit(function(){
-    $(this)[0].reset();
-});
-
-$('#LimparForm').on('click', function(){
-    alert('asdjf');
-    $('.form-horizontal').reset();
-});
-
 //# sourceMappingURL=admtables.js.map
