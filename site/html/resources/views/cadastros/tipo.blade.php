@@ -114,9 +114,25 @@ $(document).ready(function() {
     }
 });
 
+// INICIO MASCARAS
+$('#nome').keyup(function() {
+    this.value = this.value.replace(/[^\w\.][ ]|\d/g, '');
+});
+$('#MAC').mask("AA:AA:AA:AA:AA:AA");
+$('#IP').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
+    translation: {
+        'Z': {
+        pattern: /[0-9]/, optional: true
+        }
+    }
+});
+//FIM MASCARAS
+
+//INICIO EVENTOS DE BOTÕES
 $('#btnNovo').on('click', function(){
     var formulario = document.querySelector("#formCadastros");
     formulario.setAttribute("action", "cadastros/salvar");
+
 });
 
 $('#btnFechar').on('click', function(){
@@ -124,14 +140,22 @@ $('#btnFechar').on('click', function(){
 });
 
 $('#btnCadastrar').on('click', function(){
-    $.post("cadastros/salvar", $( ".form-horizontal" ).serialize());
-    $(".conteudo").load("cadastros/tipo/3");
+    $.ajax({
+        data: $('.form-horizontal').serialize(),
+        type: $('.form-horizontal').attr('method'),
+        url: $('.form-horizontal').attr('action'),
+        success: function(response) {
+            $('.conteudo').html(response);
+        }
+    });
     $('.modal-backdrop').fadeOut(1000);
     $('.bg-gradient').fadeOut(1000);
     $('.loading').fadeOut(1000);
+    // return false;
 });
+//FIM EVENTOS DE BOTÕES
 
-setTimeout(function(){
-  $('.alert').fadeIn();
-}, 3000);
+// setTimeout(function(){
+//   $('.alert').fadeOut();
+// }, 3000);
 </script>

@@ -46,7 +46,7 @@ class RequisicoesController extends Controller
                 $titulo = 'Funcionários';
                 break;
             default:
-                $titulo = 'Todos Cadastros';
+                $titulo = 'Todos';
                 break;
         }
         if ($tipo == null) {
@@ -56,34 +56,58 @@ class RequisicoesController extends Controller
         }
 
         $campus = \App\Campus::get();
-        $utipo = \App\UsuarioTipo::get();
-        return view('cadastros.tipo',compact('requisicoes','titulo','campus','utipo'));
+        // $utipo = \App\UsuarioTipo::get();
+        return view('cadastros.tipo',compact('requisicoes','titulo','campus'));
     }
 
     public function Salvar(Request $request)
     {
-        $tipo = $request->input('tipo');
-        $req = new \App\Requisicoes;
-        $req->nome = $request->input('nome');
-        $req->rarefunc = $request->input('rarefunc');
-        $req->ip = $request->input('IP');
-        $req->MAC = $request->input('MAC');
-        $req->campus_id = $request->input('campus');
-        switch ($request->input('tipo')) {
-            case 'Professores':
+        try {
+            $req = new \App\Requisicoes;
+            $req->nome = $request->input('nome');
+            $req->rarefunc = $request->input('rarefunc');
+            $req->ip = $request->input('IP');
+            $req->MAC = $request->input('MAC');
+            $req->campus_id = $request->input('campus');
+            switch ($request->input('tipo')) {
+                case 'Professores':
                 $tp = 2;
                 break;
-            case 'Funcionários':
+                case 'Funcionários':
                 $tp = 3;
                 break;
-            default:
+                default:
                 $tp = 1;
                 break;
+            }
+            $req->usuarioTipo_id = $tp;
+            $req->save();
+            switch ($tp) {
+                case '1':
+                $titulo = 'Alunos';
+                break;
+                case '2':
+                $titulo = 'Professores';
+                break;
+                case '3':
+                $titulo = 'Funcionários';
+                break;
+                default:
+                $titulo = 'Todos';
+                break;
+            }
+            if ($tp == null) {
+                $requisicoes = \App\Requisicoes::get();
+            } else {
+                $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tp)->get();
+            }
+            $mensagem = 'Cadastrado com sucesso!!!';
+            $campus = \App\Campus::get();
+            return view('cadastros.tipo',compact('requisicoes','titulo','campus','mensagem'));
+        } catch (\Exception $e) {
+            return $e;
         }
-        $req->usuarioTipo_id = $tp;
-        $req->save();
-        // return redirect()->action('RequisicoesController@PorStatus', $tp)->with('mensagem','Cadastrado com sucesso!!!');
-        // return redirect()->route('cadastros.tipo',[$tp])->with('mensagem','Cadastrado com sucesso!!!');
+
     }
 
 }

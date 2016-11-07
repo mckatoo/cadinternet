@@ -13,7 +13,7 @@
           <input type="text" class="form-control" id="rarefunc" name="rarefunc">
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" id="grupoIP">
       <label for="IP" class="col-sm-4 control-label">Endereço IP</label>
       <div class="col-sm-8">
           <input type="text" class="form-control" id="IP" name="IP">
@@ -37,13 +37,3 @@
       </div>
     </div>
 </form>
-<script>
-$('#MAC').mask("AA:AA:AA:AA:AA:AA");
-$('#IP').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
-    translation: {
-        'Z': {
-        pattern: /[0-9]/, optional: true
-        }
-    }
-});
-</script>
