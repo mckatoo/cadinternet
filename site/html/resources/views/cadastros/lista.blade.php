@@ -1,8 +1,13 @@
+<input type="hidden" name="token" id="token" value="{{csrf_token()}}">
+<input type="hidden" name="titulo" id="titulo" value="{{$titulo}}">
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
             {{$titulo}}
         </div>
+        @if (isset($mensagem))
+            <div class="alert alert-success">{{$mensagem}}</div>
+        @endif
         <!-- /.panel-heading -->
         <div class="panel-body">
             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
@@ -59,7 +64,7 @@
                                 </a>
                             </td>
                             <td class="centro-total">
-                                <a href="#" class="btn btn-xs btn-danger">
+                                <a href="#" class="btn btn-xs btn-danger" onclick="apagar({{$req->id}})">
                                     <i class="fa fa-recycle"></i> Apagar
                                 </a>
                             </td>
@@ -84,4 +89,12 @@ $(document).ready(function() {
         });
     }
 });
+function apagar(id)
+{
+    token = $("#token").val();
+    $.post( "cadastros/apagar", { id: id, _token: token})
+        .done(function(data) {
+            $('.conteudo').html(data);
+    });
+};
 </script>

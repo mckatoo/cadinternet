@@ -1135,7 +1135,8 @@ $(document).ready(function() {
             "language": {
     		    "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
     		},
-            responsive: true
+            "responsive": true,
+            "order": [[ 5, "asc" ]]
         });
     }
     fadeout();

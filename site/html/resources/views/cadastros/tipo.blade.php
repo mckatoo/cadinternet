@@ -1,3 +1,4 @@
+<input type="hidden" name="titulo" value="{{$titulo}}">
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -62,13 +63,13 @@
                                             <i class="fa fa-save"></i> Cadastrar
                                     @endif
                                     @if ($req->status->status == 'OK')
-                                        <a href="#" class="btn btn-xs btn-success">
+                                        <a href="#" class="btn btn-xs btn-success" id="btnEditar">
                                             <i class="fa fa-edit"></i> Editar
                                     @endif
                                     </a>
                                 </td>
                                 <td class="centro-total">
-                                    <a href="#" class="btn btn-xs btn-danger">
+                                    <a class="btn btn-xs btn-danger">
                                         <i class="fa fa-recycle"></i> Apagar
                                     </a>
                                 </td>
@@ -93,7 +94,7 @@
       </div>
       <div class="modal-footer">
         <button id="btnFechar" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button id="btnCadastrar" class="btn btn-primary">Cadastrar</button>
+        <button id="btnPreCadastro" class="btn btn-primary">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -109,7 +110,8 @@ $(document).ready(function() {
             "language": {
     		    "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
     		},
-            responsive: true
+            "responsive": true,
+            "order": [[ 4, "asc" ]]
         });
     }
 });
@@ -130,16 +132,18 @@ $('#IP').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
 
 //INICIO EVENTOS DE BOTÕES
 $('#btnNovo').on('click', function(){
+    $('#grupoIP').addClass('hidden');
     var formulario = document.querySelector("#formCadastros");
     formulario.setAttribute("action", "cadastros/salvar");
-
 });
+
+
 
 $('#btnFechar').on('click', function(){
     $('.form-horizontal')[0].reset();
 });
 
-$('#btnCadastrar').on('click', function(){
+$('#btnPreCadastro').on('click', function(){
     $.ajax({
         data: $('.form-horizontal').serialize(),
         type: $('.form-horizontal').attr('method'),
@@ -153,9 +157,10 @@ $('#btnCadastrar').on('click', function(){
     $('.loading').fadeOut(1000);
     // return false;
 });
+
 //FIM EVENTOS DE BOTÕES
 
-// setTimeout(function(){
-//   $('.alert').fadeOut();
-// }, 3000);
+setTimeout(function(){
+  $('.alert').fadeOut();
+}, 3000);
 </script>

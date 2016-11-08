@@ -62,13 +62,14 @@ class RequisicoesController extends Controller
 
     public function Salvar(Request $request)
     {
+        $campus = \App\Campus::get();
         try {
             $req = new \App\Requisicoes;
-            $req->nome = $request->input('nome');
-            $req->rarefunc = $request->input('rarefunc');
-            $req->ip = $request->input('IP');
-            $req->MAC = $request->input('MAC');
+            $req->nome = strtoupper($request->input('nome'));
+            $req->rarefunc = strtoupper($request->input('rarefunc'));
+            $req->MAC = strtoupper($request->input('MAC'));
             $req->campus_id = $request->input('campus');
+            $titulo = $request->input('tipo');
             switch ($request->input('tipo')) {
                 case 'Professores':
                 $tp = 2;
@@ -82,32 +83,39 @@ class RequisicoesController extends Controller
             }
             $req->usuarioTipo_id = $tp;
             $req->save();
-            switch ($tp) {
-                case '1':
-                $titulo = 'Alunos';
-                break;
-                case '2':
-                $titulo = 'Professores';
-                break;
-                case '3':
-                $titulo = 'Funcionários';
-                break;
-                default:
-                $titulo = 'Todos';
-                break;
-            }
             if ($tp == null) {
                 $requisicoes = \App\Requisicoes::get();
             } else {
                 $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tp)->get();
             }
             $mensagem = 'Cadastrado com sucesso!!!';
-            $campus = \App\Campus::get();
             return view('cadastros.tipo',compact('requisicoes','titulo','campus','mensagem'));
         } catch (\Exception $e) {
             return $e;
         }
+    }
 
+    public function Apagar(Request $request)
+    {
+        $id = $request->input('id');
+        $titulo = $request->input('titulo');
+        dd($titulo);
+        $campus = \App\Campus::get();
+        try {
+            $req = \App\Requisicoes::find($id);
+            $nome = $req->nome;
+            $tipo = $req->usuarioTipo_id;
+            $req->delete();
+            $mensagem = "$nome excluido com sucesso!!!";
+            $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tipo)->get();
+            if (($titulo == "Cadastros Pendentes")||($titulo == "Cadastros Efetivados")||($titulo == "Cadastros em Andamento")||($titulo == "Todos Cadastros")) {
+                return view('cadastros.lista',compact('requisicoes','titulo','mensagem'));
+            } else {
+                return view('cadastros.tipo',compact('requisicoes','titulo','campus','mensagem'));
+            }
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 
 }
