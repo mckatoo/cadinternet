@@ -1210,4 +1210,8 @@ $('#tipoFuncionario').on('click', function(){
     fadeout();
 });
 
+setTimeout(function(){
+  $('.alert').fadeOut();
+}, 3000);
+
 //# sourceMappingURL=admtables.js.map

@@ -85,16 +85,22 @@ $(document).ready(function() {
             "language": {
     		    "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
     		},
-            responsive: true
+            responsive: true,
+            "order": [[ 5, "asc" ]]
         });
     }
 });
 function apagar(id)
 {
     token = $("#token").val();
-    $.post( "cadastros/apagar", { id: id, _token: token})
+    titulo = $("#titulo").val();
+    $.post( "cadastros/apagar", { id: id, _token: token, titulo: titulo})
         .done(function(data) {
-            $('.conteudo').html(data);
+            $('#lista').html(data);
     });
 };
+
+setTimeout(function(){
+  $('.alert').fadeOut();
+}, 3000);
 </script>

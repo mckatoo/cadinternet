@@ -1,4 +1,3 @@
-<input type="hidden" name="titulo" value="{{$titulo}}">
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">

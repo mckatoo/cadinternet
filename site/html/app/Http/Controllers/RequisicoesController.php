@@ -99,7 +99,6 @@ class RequisicoesController extends Controller
     {
         $id = $request->input('id');
         $titulo = $request->input('titulo');
-        dd($titulo);
         $campus = \App\Campus::get();
         try {
             $req = \App\Requisicoes::find($id);
@@ -108,8 +107,14 @@ class RequisicoesController extends Controller
             $req->delete();
             $mensagem = "$nome excluido com sucesso!!!";
             $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tipo)->get();
+            $conta = [
+                "OK" => \App\Requisicoes::where('status_id','3')->count(),
+                "CADASTRANDO" => \App\Requisicoes::where('status_id','2')->count(),
+                "PENDENTES" => \App\Requisicoes::where('status_id','1')->count(),
+                "TODOS" => \App\Requisicoes::count(),
+            ];
             if (($titulo == "Cadastros Pendentes")||($titulo == "Cadastros Efetivados")||($titulo == "Cadastros em Andamento")||($titulo == "Todos Cadastros")) {
-                return view('cadastros.lista',compact('requisicoes','titulo','mensagem'));
+                return view('cadastros.lista',compact('requisicoes','titulo','conta','mensagem'));
             } else {
                 return view('cadastros.tipo',compact('requisicoes','titulo','campus','mensagem'));
             }

@@ -93,8 +93,10 @@
             </div>
         </div>
         <!-- /.row -->
+        {{-- inicio lista --}}
         <div class="row" id="lista">
         </div>
+        {{-- fim lista --}}
         <!-- /.row -->
     </div>
     <!-- /#page-wrapper -->
