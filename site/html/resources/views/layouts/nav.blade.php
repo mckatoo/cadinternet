@@ -58,7 +58,7 @@
                     <a href="#" id="tipoFuncionario" class="itemenu"><i class="fa fa-user fa-fw"></i> Funcionários</a>
                 </li>
                 <li>
-                    <a href="#" id="Configuracoes" class="itemenu"><i class="fa fa-user fa-fw"></i> Configurações</a>
+                    <a href="#" id="Configuracoes" class="itemenu"><i class="fa fa-warning fa-fw"></i> Configurações</a>
                 </li>
             </ul>
         </div>
