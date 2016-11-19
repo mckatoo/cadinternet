@@ -57,6 +57,7 @@ class RequisicoesController extends Controller
 
         $campus = \App\Campus::get();
         // $utipo = \App\UsuarioTipo::get();
+
         return view('cadastros.tipo',compact('requisicoes','titulo','campus'));
     }
 
