@@ -1,6 +1,6 @@
 cadinternet:
     container_name: cadinternet
-    build: .
+    image: mckatoo/nginx-php:0.2
     ports:
         - "801:80"
     environment:
