@@ -9,10 +9,10 @@ $(document).ready(function() {
     		    "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
     		},
             "responsive": true,
-            "order": [[ 5, "asc" ]]
+            "order": [[ 5, "asc" ]],
+            "initComplete": fadeout()
         });
     }
-    fadeout();
 });
 
 function fadein(tempo)

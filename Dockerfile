@@ -5,9 +5,7 @@ RUN apt-get update && apt-get install -y \
         php-mysql \
         php-mbstring \
         php-mcrypt \
-        nodejs \
         git \
-        npm \
         php-dom \
         php-pear \
         php-curl \
