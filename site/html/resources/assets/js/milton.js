@@ -1,20 +1,3 @@
-$(document).ready(function() {
-    fadein();
-    if ( $.fn.dataTable.isDataTable( '#dataTables' ) ) {
-    table = $('#dataTables').DataTable();
-    }
-    else {
-        table = $('#dataTables').DataTable({
-            "language": {
-    		    "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
-    		},
-            "responsive": true,
-            "order": [[ 5, "asc" ]],
-            "initComplete": fadeout()
-        });
-    }
-});
-
 function fadein(tempo)
 {
     tmp = 1000;
@@ -36,23 +19,23 @@ $('#ok').on('click', function(){
     fadeout();
 });
 
-$('#cadastrando').on('click', function(){
-    fadein();
-    $('#lista').load('cadastros/pesquisa/status/2');
-    fadeout();
-});
-
-$('#pendente').on('click', function(){
-    fadein();
-    $('#lista').load('cadastros/pesquisa/status/1');
-    fadeout();
-});
-
-$('#todos').on('click', function(){
-    fadein();
-    $('#lista').load('cadastros/pesquisa/status/');
-    fadeout();
-});
+//$('#cadastrando').on('click', function(){
+//    fadein();
+//    $('#lista').load('cadastros/pesquisa/status/2');
+//    fadeout();
+//});
+//
+//$('#pendente').on('click', function(){
+//    fadein();
+//    $('#lista').load('cadastros/pesquisa/status/1');
+//    fadeout();
+//});
+//
+//$('#todos').on('click', function(){
+//    fadein();
+//    $('#lista').load('cadastros/pesquisa/status/');
+//    fadeout();
+//});
 
 $('#Principal').on('click', function(){
     $('.itemenu').removeClass('active');
@@ -82,6 +65,31 @@ $('#tipoFuncionario').on('click', function(){
     $('#tipoFuncionario').addClass('active');
     fadeout();
 });
+
+
+// INICIO MASCARAS
+$('#nome').keyup(function() {
+    this.value = this.value.replace(/[^\w\.][ ]|\d/g, '');
+});
+$('#MAC').mask("AA:AA:AA:AA:AA:AA");
+$('#IP').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
+    translation: {
+        'Z': {
+        pattern: /[0-9]/, optional: true
+        }
+    }
+});
+//FIM MASCARAS
+
+function apagarCadastro(id)
+{
+    token = $("#token").val();
+    titulo = $("#titulo").val();
+    $.post( "cadastros/apagar", { id: id, _token: token, titulo: titulo})
+        .done(function(data) {
+            $('#lista').html(data);
+    });
+};
 
 setTimeout(function(){
   $('.alert').fadeOut();

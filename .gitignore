@@ -8,4 +8,6 @@ Homestead.yaml
 site/html/vendor
 site/html/node_modules
 site/html/public/build
+site/html/storage
 /logs
+/site/html/nbproject/private/

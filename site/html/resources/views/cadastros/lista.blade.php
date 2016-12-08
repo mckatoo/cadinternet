@@ -64,48 +64,17 @@
                                 </a>
                             </td>
                             <td class="centro-total">
-                                <a href="#" class="btn btn-xs btn-danger" onclick="apagar({{$req->id}})">
+                                <a href="#" class="btn btn-xs btn-danger" onclick="apagarCadastro({{$req->id}})">
                                     <i class="fa fa-recycle"></i> Apagar
                                 </a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
+                <tfoot>
+                    {{$requisicoes->render()}}
+                </tfoot>
             </table>
         </div>
     </div>
 </div>
-<script>
-$(document).ready(function() {
-    if ( $.fn.dataTable.isDataTable( '#dataTables' ) ) {
-    table = $('#dataTables').DataTable();
-    }
-    else {
-        table = $('#dataTables').DataTable({
-            "language": {
-    		    "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
-    		},
-            responsive: true,
-            "order": [[ 5, "asc" ]],
-            "initComplete": function () {
-                tmp = 1000;
-                $('.bg-gradient').fadeOut(tmp);
-                $('.loading').fadeOut(tmp);
-            }
-        });
-    }
-});
-function apagar(id)
-{
-    token = $("#token").val();
-    titulo = $("#titulo").val();
-    $.post( "cadastros/apagar", { id: id, _token: token, titulo: titulo})
-        .done(function(data) {
-            $('#lista').html(data);
-    });
-};
-
-setTimeout(function(){
-  $('.alert').fadeOut();
-}, 3000);
-</script>

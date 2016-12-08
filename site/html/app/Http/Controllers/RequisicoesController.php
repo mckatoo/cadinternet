@@ -10,6 +10,12 @@ class RequisicoesController extends Controller
 {
     public function PorStatus($status_id = null)
     {
+        $conta = [
+            "OK" => \App\Requisicoes::where('status_id','3')->count(),
+            "CADASTRANDO" => \App\Requisicoes::where('status_id','2')->count(),
+            "PENDENTES" => \App\Requisicoes::where('status_id','1')->count(),
+            "TODOS" => \App\Requisicoes::count(),
+        ];
         switch ($status_id) {
             case '1':
                 $titulo = 'Cadastros Pendentes';
@@ -25,12 +31,14 @@ class RequisicoesController extends Controller
                 break;
         }
         if ($status_id == null) {
-            $requisicoes = \App\Requisicoes::get();
+//            $requisicoes = \App\Requisicoes::get();
+            $requisicoes = \App\Requisicoes::orderBy('created_at')->paginate(5);
         } else {
-            $requisicoes = \App\Requisicoes::where('status_id', $status_id)->get();
+//            $requisicoes = \App\Requisicoes::where('status_id', $status_id)->get();
+            $requisicoes = \App\Requisicoes::where('status_id', $status_id)->orderBy('created_at')->paginate(5);
         }
 
-        return view('cadastros.lista',compact('requisicoes','titulo'));
+        return view('home',compact('requisicoes','titulo','conta'));
     }
 
     public function PorTipo($tipo = null)

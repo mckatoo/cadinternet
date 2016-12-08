@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" ng-app="CadInternet">
 
 <head>
 
@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Milton Carlos Katoo">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,6 +17,7 @@
     <!-- CSS COMPILADO PELO GULP -->
     <link href="{{ elixir('css/adm.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ elixir('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +47,9 @@
     <!-- /#wrapper -->
 
     <!-- JAVASCRIPT COMPILADO PELO GULP -->
+    <script src="{{ elixir('js/angular.js') }}"></script>
     <script src="{{ elixir('js/adm.js') }}"></script>
+    <script src="{{ elixir('js/app-angular.js') }}"></script>
 
 </body>
 
