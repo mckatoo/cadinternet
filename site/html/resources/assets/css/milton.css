@@ -92,3 +92,11 @@
 tfoot tr td{
     text-align: right;
 }
+
+.huge{
+    font-size: 18pt;
+}
+
+.pagination{
+    margin: 0px;
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" ng-app="CadInternet">
+<html lang="pt-BR">
 
 <head>
 
@@ -40,16 +40,16 @@
 
         <!-- Navigation -->
         @include('layouts.nav')
-
-        @yield('content')
+        <div id="vueApp">
+          @yield('content')
+        </div>
 
     </div>
     <!-- /#wrapper -->
 
     <!-- JAVASCRIPT COMPILADO PELO GULP -->
-    <script src="{{ elixir('js/angular.js') }}"></script>
+    <script src="{{ elixir('js/vueapp.js') }}"></script>
     <script src="{{ elixir('js/adm.js') }}"></script>
-    <script src="{{ elixir('js/app-angular.js') }}"></script>
 
 </body>
 
