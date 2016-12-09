@@ -23,13 +23,10 @@ elixir(function(mix) {
       './node_modules/jquery/dist/jquery.js',
       './resources/assets/jquery/jquery.mask.min.js',
       './node_modules/bootstrap/dist/js/bootstrap.js',
-      './node_modules/vue/dist/vue.js',
-      './node_modules/vue-resource/dist/vue-resource.js',
       './resources/assets/metisMenu/metisMenu.min.js',
       './resources/assets/raphael/raphael.min.js',
       './resources/assets/js/sb-admin-2.js',
       './resources/assets/js/milton.js',
-      './resources/assets/js/app.js',
     ], 'public/js/adm.js'),
     mix.scripts([
       './node_modules/vue/dist/vue.js',

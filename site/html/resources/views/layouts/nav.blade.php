@@ -46,19 +46,19 @@
                     <!-- /input-group -->
                 </li>
                 <li>
-                    <a href="{{ route('home') }}" id="Principal" class="itemenu active"><i class="fa fa-home fa-fw"></i> Principal</a>
+                    <a href="{{ route('home') }}" id="Principal" class="itemenu active" {{ $tipo==1 }}><i class="fa fa-home fa-fw"></i> Principal</a>
                 </li>
                 <li>
-                    <a href="#" id="tipoAluno" class="itemenu"><i class="fa fa-pencil fa-fw"></i> Alunos</a>
+                    <a href="{{route('cadastros.tipo', '1')}}" id="tipoAluno" class="itemenu"><i class="fa fa-pencil fa-fw"></i> Alunos</a>
                 </li>
                 <li>
-                    <a href="#" id="tipoProfessor" class="itemenu"><i class="fa fa-graduation-cap fa-fw"></i> Professores</a>
+                    <a href="{{route('cadastros.tipo', '2')}}" id="tipoProfessor" class="itemenu"><i class="fa fa-graduation-cap fa-fw"></i> Professores</a>
                 </li>
                 <li>
-                    <a href="#" id="tipoFuncionario" class="itemenu"><i class="fa fa-user fa-fw"></i> Funcionários</a>
+                    <a href="{{route('cadastros.tipo', '3')}}" id="tipoFuncionario" class="itemenu"><i class="fa fa-user fa-fw"></i> Funcionários</a>
                 </li>
                 <li>
-                    <a href="#" id="Configuracoes" class="itemenu"><i class="fa fa-warning fa-fw"></i> Configurações</a>
+                    <a href="#" class="itemenu"><i class="fa fa-warning fa-fw"></i> Configurações</a>
                 </li>
             </ul>
         </div>

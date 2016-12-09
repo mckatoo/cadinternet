@@ -37,8 +37,9 @@ class RequisicoesController extends Controller
 //            $requisicoes = \App\Requisicoes::where('status_id', $status_id)->get();
             $requisicoes = \App\Requisicoes::where('status_id', $status_id)->orderBy('created_at')->paginate(5);
         }
+        $active='active';
 
-        return view('home',compact('requisicoes','titulo','conta'));
+        return view('home',compact('requisicoes','titulo','conta','active'));
     }
 
     public function PorTipo($tipo = null)
@@ -58,15 +59,14 @@ class RequisicoesController extends Controller
                 break;
         }
         if ($tipo == null) {
-            $requisicoes = \App\Requisicoes::get();
+            $requisicoes = \App\Requisicoes::orderBy('created_at')->paginate(5);
         } else {
-            $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tipo)->get();
+            $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tipo)->orderBy('created_at')->paginate(5);
         }
 
         $campus = \App\Campus::get();
-        // $utipo = \App\UsuarioTipo::get();
 
-        return view('cadastros.tipo',compact('requisicoes','titulo','campus'));
+        return view('cadastros.tipo',compact('requisicoes','titulo','campus','tipo'));
     }
 
     public function Salvar(Request $request)

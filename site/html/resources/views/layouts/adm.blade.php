@@ -40,15 +40,12 @@
 
         <!-- Navigation -->
         @include('layouts.nav')
-        <div id="vueApp">
-          @yield('content')
-        </div>
+        @yield('content')
 
     </div>
     <!-- /#wrapper -->
 
     <!-- JAVASCRIPT COMPILADO PELO GULP -->
-    <script src="{{ elixir('js/vueapp.js') }}"></script>
     <script src="{{ elixir('js/adm.js') }}"></script>
 
 </body>

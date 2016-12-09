@@ -31,6 +31,7 @@ class HomeController extends Controller
             "PENDENTES" => \App\Requisicoes::where('status_id','1')->count(),
             "TODOS" => \App\Requisicoes::count(),
         ];
-        return view('home',compact('requisicoes','titulo','conta'));
+        $active='active';
+        return view('home',compact('requisicoes','titulo','conta','active'));
     }
 }
