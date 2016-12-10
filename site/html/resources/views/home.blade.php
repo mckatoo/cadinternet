@@ -93,16 +93,22 @@
     </div>
   </div>
 <input type="hidden" name="token" id="token" value="{{csrf_token()}}">
-<input type="hidden" name="titulo" id="titulo" value="{{$titulo}}">
+@if (isset($titulo))
+  <input type="hidden" name="titulo" id="titulo" value="{{$titulo}}">
+@endif
 <div class="col-lg-12">
   <div class="panel panel-default">
     <div class="panel-heading">
-      {{$titulo}}
+      @if (isset($titulo))
+        {{$titulo}}
+      @else
+        Resultado da Pesquisa
+      @endif
     </div>
     @if (isset($mensagem))
     <div class="alert alert-success">{{$mensagem}}</div>
     @endif
-    <!-- /.panel-heading -->
+    {{-- /.panel-heading --}}
     <div class="panel-body">
       <table width="100%" class="table table-striped table-bordered table-hover">
         <thead>

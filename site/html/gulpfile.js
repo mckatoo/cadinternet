@@ -29,10 +29,9 @@ elixir(function(mix) {
       './resources/assets/js/milton.js',
     ], 'public/js/adm.js'),
     mix.scripts([
-      './node_modules/vue/dist/vue.js',
-      './node_modules/vue-resource/dist/vue-resource.js',
+      './node_modules/angular/angular.js',
       './resources/assets/js/app.js',
-    ], 'public/js/vueapp.js'),
+    ], 'public/js/angular-app.js'),
     mix.scripts([
       './node_modules/jquery/dist/jquery.js',
       './resources/assets/jquery/jquery.mask.min.js',

@@ -47,6 +47,7 @@
 
     <!-- JAVASCRIPT COMPILADO PELO GULP -->
     <script src="{{ elixir('js/adm.js') }}"></script>
+    {{-- <script src="{{ elixir('js/angular-app.js') }}"></script> --}}
 
 </body>
 

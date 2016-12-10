@@ -8,6 +8,27 @@ use Symfony\Component\VarDumper\Cloner\VarCloner;
 
 class RequisicoesController extends Controller
 {
+    public function Pesquisa(Request $request)
+    {
+        $palavra = $request->input('pesquisar');
+        $conta = [
+            "OK" => \App\Requisicoes::where('status_id','3')->count(),
+            "CADASTRANDO" => \App\Requisicoes::where('status_id','2')->count(),
+            "PENDENTES" => \App\Requisicoes::where('status_id','1')->count(),
+            "TODOS" => \App\Requisicoes::count(),
+        ];
+        if ($palavra) {
+            $requisicoes = \App\Requisicoes::with('campus','status','tipo')
+            ->where('nome','like','%'.$palavra.'%')
+            ->orWhere('rarefunc','like','%'.$palavra.'%')
+            ->paginate(5);
+        } else {
+            $requisicoes = \App\Requisicoes::with('campus','status','tipo')->paginate(5);
+        }
+
+        return view('home',compact('requisicoes','conta'));
+    }
+
     public function PorStatus($status_id = null)
     {
         $conta = [
@@ -31,15 +52,15 @@ class RequisicoesController extends Controller
                 break;
         }
         if ($status_id == null) {
-//            $requisicoes = \App\Requisicoes::get();
             $requisicoes = \App\Requisicoes::orderBy('created_at')->paginate(5);
+            // $requisicoes = \App\Requisicoes::orderBy('created_at')->get();
         } else {
-//            $requisicoes = \App\Requisicoes::where('status_id', $status_id)->get();
             $requisicoes = \App\Requisicoes::where('status_id', $status_id)->orderBy('created_at')->paginate(5);
+            // $requisicoes = \App\Requisicoes::where('status_id', $status_id)->orderBy('created_at')->get();
         }
         $active='active';
 
-        return view('home',compact('requisicoes','titulo','conta','active'));
+        return view('home',compact('requisicoes','titulo','conta'));
     }
 
     public function PorTipo($tipo = null)
@@ -66,7 +87,7 @@ class RequisicoesController extends Controller
 
         $campus = \App\Campus::get();
 
-        return view('cadastros.tipo',compact('requisicoes','titulo','campus','tipo'));
+        return view('cadastros.tipo',compact('requisicoes','titulo','campus'));
     }
 
     public function Salvar(Request $request)

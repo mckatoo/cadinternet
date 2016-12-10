@@ -17,6 +17,7 @@ $('#ok').on('click', function(){
     $('#lista').load('cadastros/pesquisa/status/3');
 });
 
+
 // INICIO MASCARAS
 $('#nome').keyup(function() {
     this.value = this.value.replace(/[^\w\.][ ]|\d/g, '');

@@ -16,14 +16,17 @@
                 <i class="fa fa-user fa-fw"></i> | {{Auth::user()->name}} <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> Cadastrar Administradores</a>
+                <li><a href="{{ route('auth.registro') }}"><i class="fa fa-user fa-fw"></i> Cadastrar Administradores</a>
                 </li>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Mudar Senha</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="#" onclick="$.post({{ url('logout') }}">
-                    <i class="fa fa-sign-out fa-fw"></i> Sair</a>
-                </li>
+                <form action="{{ route('auth.sair') }}" method="post" id="frmSair">
+                    {{ csrf_field() }}
+                    <li><a href="#" onclick="$('#frmSair').submit()">
+                        <i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                    </li>
+                </form>
             </ul>
             <!-- /.dropdown-user -->
         </li>
@@ -35,18 +38,21 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li class="sidebar-search">
-                    <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Buscar...">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                    </div>
-                    <!-- /input-group -->
+                    <form action=" {{ route('cadastros.pesquisa') }} " method="post" id="frmPesquisar">
+                        {{ csrf_field() }}
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Buscar..." name="pesquisar">
+                            <span class="input-group-btn">
+                            <a class="btn btn-default" onclick="$('#frmPesquisar').submit()">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </span>
+                        </div>
+                        <!-- /input-group -->
+                    </form>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}" id="Principal" class="itemenu active" {{ $tipo==1 }}><i class="fa fa-home fa-fw"></i> Principal</a>
+                    <a href="{{ route('home') }}" id="Principal" class="itemenu active"><i class="fa fa-home fa-fw"></i> Principal</a>
                 </li>
                 <li>
                     <a href="{{route('cadastros.tipo', '1')}}" id="tipoAluno" class="itemenu"><i class="fa fa-pencil fa-fw"></i> Alunos</a>

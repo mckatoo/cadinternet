@@ -34,6 +34,9 @@
                                         <label>
                                             <input name="remember" type="checkbox">Lembre-me
                                         </label>
+                                        <label class="pull-right">
+                                            <a href="{{ route('auth.redefinir') }}">Redefinir minha senha.</a>
+                                        </label>
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
                                     <button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
