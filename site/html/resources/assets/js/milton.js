@@ -1,16 +1,3 @@
-function fadein(tempo)
-{
-    tmp = 1000;
-    $('.bg-gradient').fadeIn(tmp);
-    $('.loading').fadeIn(tmp);
-}
-
-function fadeout(tempo) {
-    tmp = 1000;
-    $('.bg-gradient').fadeOut(tmp);
-    $('.loading').fadeOut(tmp);
-}
-
 $('#lista').load('cadastros/pesquisa/status/1');
 
 $('#ok').on('click', function(){

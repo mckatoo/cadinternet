@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use Notifiable,SoftDeletes;
+    use Notifiable;
+    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
@@ -36,5 +37,17 @@ class User extends Authenticatable
     public function tipo()
     {
         return $this->belongsTo('App\TipoUsers','tipoUsers_id');
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        return "teste";
+        // $this->notify(new ResetPasswordNotification($token));
     }
 }
