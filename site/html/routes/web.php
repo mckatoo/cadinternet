@@ -12,6 +12,7 @@ Route::group(['middleware' => 'web'], function() {
 	Route::group(['as' => 'auth.'], function() {
 		Route::get('/registro', ['as' => 'registro', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
 		Route::post('/logout', ['as' => 'sair', 'uses' => 'Auth\LoginController@logout']);
+		Route::post('/salva/reset', 'Auth\ResetPasswordController@reset');
 		Route::get('/password/reset', 'MailController@indexReset');
 		Route::post('/enviar/reset','MailController@resetEnviar');
 	});

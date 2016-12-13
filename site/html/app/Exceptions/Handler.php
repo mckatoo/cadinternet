@@ -44,6 +44,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException) {
+            $erro = 'Erro não identificado!';
+            return response()->view('errors.404',compact('erro'));
+        }
+
         return parent::render($request, $exception);
     }
 

@@ -6,6 +6,7 @@ use App\Mail\ResetSenhas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Password;
 
 class MailController extends Controller
 {
@@ -25,13 +26,14 @@ class MailController extends Controller
 	     * @return Response
 	     */
 
-    	try {
-	        Mail::to($request->input('email'))
-	        	->send(new ResetSenhas($request));
+		$passwordreset = new \App\PasswordResets();
+		$passwordreset->email = $request->email;
+		$passwordreset->token = $request->_token;
+		$passwordreset->save();
 
-	    	return view('auth.login', ['sucesso' => 'Email enviado com sucesso!']);
-    	} catch (Exception $erro) {
-	    	return back()->compact('erro');
-    	}
+        Mail::to($request->input('email'))
+        	->send(new ResetSenhas($request));
+
+    	return view('auth.login', ['sucesso' => 'Email enviado com sucesso!']);
     }
 }

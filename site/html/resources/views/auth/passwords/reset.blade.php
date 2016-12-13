@@ -10,15 +10,21 @@
                     </div>
 
                     <div class="panel-body">
-                        @if (session('status'))
+                        @if (isset(session('status')))
                             <div class="alert alert-success">
-                                {{ session('status') }}
+                                <a class="close" data-dismiss="alert">&times;</a>
+                                <strong>Sucesso!</strong> {{ session('status') }}
                             </div>
                         @endif
-                        <form role="form" method="POST" action="{{ url('/password/reset') }}">
-                            {{ csrf_field() }}
+                        @if (isset($erro))
+                            <div class="alert alert-danger">
+                                <a class="close" data-dismiss="alert">&times;</a>
+                                <strong>Erro!</strong> {{ $erro }}
+                            </div>
+                        @endif
+                        <form role="form" method="POST" action="{{ url('/salva/reset') }}">
                             <fieldset>
-                                <input type="hidden" name="token" value="{{ $token }}">
+                                <input type="hidden" name="_token" value="{{ $token }}">
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <input placeholder="EMail" id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
 
@@ -62,3 +68,8 @@
         </div>
     </div>
 @endsection
+<script>
+    setTimeout(function(){
+      $('.alert').fadeOut();
+    }, 3000);
+</script>

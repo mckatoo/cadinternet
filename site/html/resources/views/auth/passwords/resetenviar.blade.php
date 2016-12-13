@@ -12,14 +12,14 @@
                     @if (isset($erro))
                         <div class="alert alert-danger">
                             <a class="close" data-dismiss="alert">&times;</a>
-                            <strong>Erro!</strong> {{ $erro }}
+                            <strong>{{ $erro }}</strong> 
                         </div>
                     @endif
                     <form role="form" method="POST" action="{{ url('enviar/reset') }}">
                         {{ csrf_field() }}
                         <fieldset>
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -41,3 +41,8 @@
     </div>
 </div>
 @endsection
+<script>
+    setTimeout(function(){
+      $('.alert').fadeOut();
+    }, 3000);
+</script>

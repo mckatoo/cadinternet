@@ -40,8 +40,19 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                @if (isset($erro))
+                    <div class="alert alert-danger">
+                        <a class="close" data-dismiss="alert">&times;</a>
+                        <h1>{{ $erro }}</h1> 
+                    </div>
+                @endif
             </div>
         </div>
     </body>
 </html>
+<script>
+    setTimeout(function(){
+      $('.alert').fadeOut();
+      location.href="url('/')";
+    }, 3000);
+</script>
