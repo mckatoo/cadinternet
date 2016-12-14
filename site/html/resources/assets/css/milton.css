@@ -79,8 +79,12 @@
 }
 
 .painel-com-botao{
+    height: 54px;
+}
+
+#btnNovo{
     position: relative;
-    top: -38px;
+    top: -34px;
 }
 
 .sidebar ul li a.active {
@@ -111,4 +115,23 @@ tfoot tr td{
     width: 300px;
     height: 393px;
     margin: auto;
+}
+
+.erroDB{
+    background: url('/img/erroDB.png');
+    width: 300px;
+    height: 393px;
+    margin: auto;
+}
+
+.table tbody tr td {
+    vertical-align: middle;
+}
+
+.titulo-painel{
+    display: inline;
+}
+
+.titulo-painel h4{
+    vertical-align: middle;
 }

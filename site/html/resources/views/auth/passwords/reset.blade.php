@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="panel-body">
-                        @if (isset(session('status')))
+                        @if (session('status')!==null)
                             <div class="alert alert-success">
                                 <a class="close" data-dismiss="alert">&times;</a>
                                 <strong>Sucesso!</strong> {{ session('status') }}

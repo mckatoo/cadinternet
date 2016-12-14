@@ -92,21 +92,34 @@
       </div>
     </div>
   </div>
-<input type="hidden" name="token" id="token" value="{{csrf_token()}}">
-@if (isset($titulo))
+  <input type="hidden" name="token" id="token" value="{{csrf_token()}}">
+  @if (isset($titulo))
   <input type="hidden" name="titulo" id="titulo" value="{{$titulo}}">
-@endif
-<div class="col-lg-12">
+  @endif
   <div class="panel panel-default">
-    <div class="panel-heading">
-      @if (isset($titulo))
-        {{$titulo}}
-      @else
+    <div class="panel-heading painel-com-botao">
+      <div class="titulo-painel">
+        @if (isset($titulo))
+        <h5>
+          {{$titulo}}
+        </h5>
+        <button type="button" data-toggle="modal" data-target="#novo" class="btn btn-primary pull-right" id="btnNovo">
+          <i class="fa fa-plus"></i> Novo Cadastro
+        </button>
+        @else
         Resultado da Pesquisa
-      @endif
+        @endif
+      </div>
     </div>
-    @if (isset($mensagem))
-    <div class="alert alert-success">{{$mensagem}}</div>
+    @if ($errors->any())
+      <ul class="list-group">
+        @foreach ($errors->all() as $error)
+          <li class="alert alert-warning list-group-item">{{ $error }}</li>
+        @endforeach
+      </ul>
+    @endif
+    @if (session('mensagem')!==null)
+      <div class="alert alert-success">{{session('mensagem')}}</div>
     @endif
     {{-- /.panel-heading --}}
     <div class="panel-body">
@@ -150,36 +163,53 @@
             <td class="centro-total">{{date('d/m/Y H:i', strtotime($req->created_at))}}</td>
             <td class="centro-total">
               @if ($req->status->status == 'PENDENTE')
-              <a href="#" class="btn btn-xs btn-primary">
-                <i class="fa fa-save"></i> Cadastrar
+              <a href="#" class="btn btn-primary" id="btnAtivar">
+                <i class="fa fa-save"></i> Ativar
                 @endif
                 @if ($req->status->status == 'CADASTRANDO')
-                <a href="#" class="btn btn-xs btn-success disabled">
-                  <i class="fa fa-save"></i> Cadastrar
+                <a href="#" class="btn btn-success disabled">
+                  <i class="fa fa-save"></i> Ativar
                   @endif
                   @if ($req->status->status == 'OK')
-                <a href="#" class="btn btn-xs btn-success">
+                  <a href="#" class="btn btn-success">
                     <i class="fa fa-edit"></i> Editar
                     @endif
-                </a>
-            </td>
-            <td class="centro-total">
-              <a href="#" class="btn btn-xs btn-danger" onclick="apagarCadastro({{$req->id}})">
-                <i class="fa fa-recycle"></i> Apagar
-              </a>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="8">
-              {{$requisicoes->render()}}
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-  </div>
-</div>
-@endsection
+                  </a>
+                </td>
+                <td class="centro-total">
+                  <form id="#formApagarRequisicao" action=" {{ route('cadastros.apagar') }} " method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{ $req->id }}">
+                    <button href="#" class="btn btn btn-danger" id="btnApagarRequisicao">
+                      <i class="fa fa-recycle"></i> Apagar
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="8" class="text-center">
+                  {{$requisicoes->render()}}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="modal fade" id="novo" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="">Cadastrar {{$titulo}}</h4>
+            </div>
+            <div class="modal-body" include="titulo-painel">
+              @include('../cadastros/form')
+            </div>
+            </div>
+          </div>
+        </div>
+        @endsection
+        

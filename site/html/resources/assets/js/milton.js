@@ -4,6 +4,11 @@ $('#ok').on('click', function(){
     $('#lista').load('cadastros/pesquisa/status/3');
 });
 
+$('#btnApagar').on('click', function(){
+	if (confirm('Deseja apagar este registro?')) {
+		$('#formApagarRequisicao').submit();
+	};
+});
 
 // INICIO MASCARAS
 $('#nome').keyup(function() {

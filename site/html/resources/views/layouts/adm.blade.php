@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" ng-app="CadInternetApp">
 
 <head>
 
@@ -47,7 +47,7 @@
 
     <!-- JAVASCRIPT COMPILADO PELO GULP -->
     <script src="{{ elixir('js/adm.js') }}"></script>
-    {{-- <script src="{{ elixir('js/angular-app.js') }}"></script> --}}
+    <script src="{{ elixir('js/angular-app.js') }}"></script>
 
 </body>
 

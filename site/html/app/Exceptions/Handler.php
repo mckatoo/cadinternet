@@ -49,6 +49,11 @@ class Handler extends ExceptionHandler
             return response()->view('errors.404',compact('erro'));
         }
 
+        if ($exception instanceof \Illuminate\Database\QueryException) {
+            $erro = 'Erro na manipulação de dados!';
+            return response()->view('errors.db',compact('erro'));
+        }
+
         return parent::render($request, $exception);
     }
 

@@ -32,6 +32,8 @@ class HomeController extends Controller
             "TODOS" => \App\Requisicoes::count(),
         ];
         $active='active';
-        return view('home',compact('requisicoes','titulo','conta'));
+        $campus=\App\Campus::get();
+        $tipo=\App\UsuarioTipo::get();
+        return view('home',compact('requisicoes','titulo','conta','campus','tipo'));
     }
 }

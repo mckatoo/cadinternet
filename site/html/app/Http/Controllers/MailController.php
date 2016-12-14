@@ -25,6 +25,7 @@ class MailController extends Controller
 	     * @param  int  $orderId
 	     * @return Response
 	     */
+    	\App\PasswordResets::where('email',$request->input('email'))->delete();
 
 		$passwordreset = new \App\PasswordResets();
 		$passwordreset->email = $request->email;

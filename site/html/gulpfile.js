@@ -43,6 +43,7 @@ elixir(function(mix) {
       "css/app.css",
       "js/app.js",
       "css/adm.css",
-      "js/adm.js"
+      "js/adm.js",
+      "js/angular-app.js"
     ]);
 });
