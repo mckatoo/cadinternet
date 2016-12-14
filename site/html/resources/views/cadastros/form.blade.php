@@ -1,6 +1,7 @@
 <form class="form-horizontal" id="formCadastros" action="{{ route('cadastros.salvar') }}" method="post">
   {{csrf_field()}}
   <input type="hidden" name="tipo" id="tipo" value="{{$titulo}}">
+  <input type="hidden" name="id" id="id" value="">
   <div class="form-group">
     <label for="nome" class="col-sm-4 control-label">Nome Completo</label>
     <div class="col-sm-8">
@@ -32,7 +33,7 @@
   <div class="form-group">
     <label for="tipo" class="col-sm-4 control-label">Tipo</label>
     <div class="col-sm-8">
-        <select class="form-control" name="tipo">
+        <select class="form-control" name="tipo" id="selectTipo">
             <option value="">SELECIONE...</option>
             @foreach ($tipo as $tp)
                 <option value="{{$tp->id}}">{{$tp->tipo}}</option>
@@ -44,7 +45,7 @@
   <div class="form-group">
     <label for="campus" class="col-sm-4 control-label">Campus</label>
     <div class="col-sm-8">
-        <select class="form-control" name="campus">
+        <select class="form-control" name="campus" id="selectCampus">
             <option value="">SELECIONE...</option>
             @foreach ($campus as $cp)
                 <option value="{{$cp->id}}">{{$cp->campus}}</option>
@@ -52,16 +53,6 @@
         </select>
     </div>
   </div>
-
-
-
-
-<div ng-controller="CadInternetCtrl">
-  <input type="text" value="@{{ message }}">
-</div>
-
-
-
 
   <div class="modal-footer">
     <button type="reset" id="btnFechar" class="btn btn-default" data-dismiss="modal">Fechar</button>

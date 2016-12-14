@@ -24,6 +24,21 @@ $('#IP').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
 });
 //FIM MASCARAS
 
+$("#btnNovo").on('click', function(){
+    $("#formCadastros")[0].reset();
+});
+
+function preencheForm(id,nome,rarefunc,mac,tipo,campus,action){
+    $("#id").val(id);
+    $("#nome").val(nome);
+    $("#rarefunc").val(rarefunc);
+    $("#MAC").val(mac);
+    $("#grupoIP").removeClass('hidden');
+    $("#selectTipo").val(tipo);
+    $("#selectCampus").val(campus);
+    $("#IP").focus();
+};
+
 setTimeout(function(){
   $('.alert').fadeOut();
 }, 3000);

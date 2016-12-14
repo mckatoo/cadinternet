@@ -2,5 +2,8 @@ angular.module('CadInternetApp', []);
 
 angular.module('CadInternetApp')
     .controller('CadInternetCtrl', ['$scope', function ($scope) {
-        $scope.message = "Hello World!";
+        $scope.registros = [];
+        $scope.preencheForm = function(){
+        	console.log($scope.nome);
+        };
     }]);

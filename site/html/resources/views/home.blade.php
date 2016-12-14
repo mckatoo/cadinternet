@@ -103,7 +103,7 @@
         <h5>
           {{$titulo}}
         </h5>
-        <button type="button" data-toggle="modal" data-target="#novo" class="btn btn-primary pull-right" id="btnNovo">
+        <button type="button" data-toggle="modal" data-target="#form" class="btn btn-primary pull-right" id="btnNovo">
           <i class="fa fa-plus"></i> Novo Cadastro
         </button>
         @else
@@ -163,7 +163,14 @@
             <td class="centro-total">{{date('d/m/Y H:i', strtotime($req->created_at))}}</td>
             <td class="centro-total">
               @if ($req->status->status == 'PENDENTE')
-              <a href="#" class="btn btn-primary" id="btnAtivar">
+              <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="preencheForm(
+                '{{ $req->id }}',
+                '{{ $req->nome }}',
+                '{{ $req->rarefunc }}',
+                '{{ $req->MAC }}',
+                '{{ $req->tipo->id }}',
+                '{{ $req->campus->id }}',
+                'cadastros/atualizar')">
                 <i class="fa fa-save"></i> Ativar
                 @endif
                 @if ($req->status->status == 'CADASTRANDO')
@@ -198,7 +205,7 @@
           </table>
         </div>
       </div>
-      <div class="modal fade" id="novo" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+      <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

@@ -102,7 +102,7 @@
           <?php echo e($titulo); ?>
 
         </h5>
-        <button type="button" data-toggle="modal" data-target="#novo" class="btn btn-primary pull-right" id="btnNovo">
+        <button type="button" data-toggle="modal" data-target="#form" class="btn btn-primary pull-right" id="btnNovo">
           <i class="fa fa-plus"></i> Novo Cadastro
         </button>
         <?php else: ?>
@@ -162,7 +162,14 @@
             <td class="centro-total"><?php echo e(date('d/m/Y H:i', strtotime($req->created_at))); ?></td>
             <td class="centro-total">
               <?php if($req->status->status == 'PENDENTE'): ?>
-              <a href="#" class="btn btn-primary" id="btnAtivar">
+              <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="preencheForm(
+                '<?php echo e($req->id); ?>',
+                '<?php echo e($req->nome); ?>',
+                '<?php echo e($req->rarefunc); ?>',
+                '<?php echo e($req->MAC); ?>',
+                '<?php echo e($req->tipo->id); ?>',
+                '<?php echo e($req->campus->id); ?>',
+                'cadastros/atualizar')">
                 <i class="fa fa-save"></i> Ativar
                 <?php endif; ?>
                 <?php if($req->status->status == 'CADASTRANDO'): ?>
@@ -199,7 +206,7 @@
           </table>
         </div>
       </div>
-      <div class="modal fade" id="novo" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+      <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

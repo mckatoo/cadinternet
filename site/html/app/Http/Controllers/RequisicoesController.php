@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\UsuarioTipo;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use App\Http\Requests\RequisicoesRequest;
+use App\Http\Requests\RequisicoesAtualizarRequest;
 
 class RequisicoesController extends Controller
 {
@@ -105,13 +106,16 @@ class RequisicoesController extends Controller
 
     public function Salvar(RequisicoesRequest $request)
     {
-        $req = new \App\Requisicoes;
-        $req->nome = strtoupper($request->input('nome'));
-        $req->rarefunc = strtoupper($request->input('rarefunc'));
-        $req->MAC = strtoupper($request->input('MAC'));
-        $req->campus_id = $request->input('campus');
-        $req->usuarioTipo_id = $request->input('tipo');
-        $req->save();
+        if ($request->input('id')!==null) {
+            dd($request->all());
+        }
+        // $req = new \App\Requisicoes;
+        // $req->nome = strtoupper($request->input('nome'));
+        // $req->rarefunc = strtoupper($request->input('rarefunc'));
+        // $req->MAC = strtoupper($request->input('MAC'));
+        // $req->campus_id = $request->input('campus');
+        // $req->usuarioTipo_id = $request->input('tipo');
+        // $req->save();
 
         return back()->with('mensagem','Requisição cadastrada com sucesso!');
     }
