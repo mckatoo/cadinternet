@@ -12692,10 +12692,12 @@ $('#IP').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
 //FIM MASCARAS
 
 $("#btnNovo").on('click', function(){
+    $("#grupoIP").addClass('hidden');
     $("#formCadastros")[0].reset();
 });
 
-function preencheForm(id,nome,rarefunc,mac,tipo,campus,action){
+function preencheForm(token,id,nome,rarefunc,mac,tipo,campus,action){
+    $.post('cadastros/cadastrando',{_token: token,id: id});
     $("#id").val(id);
     $("#nome").val(nome);
     $("#rarefunc").val(rarefunc);

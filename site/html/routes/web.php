@@ -27,6 +27,7 @@ Route::group(['middleware' => 'web'], function() {
 	    Route::post('/salvar', ['as' => 'salvar', 'uses' => 'RequisicoesController@Salvar']);
 	    Route::post('/apagar', ['as' => 'apagar', 'uses' => 'RequisicoesController@Apagar']);
 	    Route::post('/pesquisa/', ['as' => 'pesquisa', 'uses' => 'RequisicoesController@Pesquisa']);
+	    Route::post('/cadastrando/', ['as' => 'cadastrando', 'uses' => 'RequisicoesController@Cadastrando']);
 	});
 
 	Route::group(['as' => 'campus.', 'prefix' => 'campus'], function() {

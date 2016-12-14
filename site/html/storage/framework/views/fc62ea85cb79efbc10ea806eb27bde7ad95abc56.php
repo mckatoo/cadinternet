@@ -163,6 +163,7 @@
             <td class="centro-total">
               <?php if($req->status->status == 'PENDENTE'): ?>
               <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="preencheForm(
+                '<?php echo e(csrf_token()); ?>',
                 '<?php echo e($req->id); ?>',
                 '<?php echo e($req->nome); ?>',
                 '<?php echo e($req->rarefunc); ?>',

@@ -104,26 +104,37 @@ class RequisicoesController extends Controller
         return view('home',compact('requisicoes','titulo','campus','conta','tipo'));
     }
 
-    public function Salvar(RequisicoesRequest $request)
+    public function Salvar(Request $request)
     {
         if ($request->input('id')!==null) {
-            dd($request->all());
+            $req = \App\Requisicoes::find($request->id);
+            $req->IP = $request->input('IP');
+            $msg ='Requisição atualizada com sucesso!';
+        }else{
+            $req = new \App\Requisicoes;
+            $msg ='Requisição cadastrada com sucesso!';
         }
-        // $req = new \App\Requisicoes;
-        // $req->nome = strtoupper($request->input('nome'));
-        // $req->rarefunc = strtoupper($request->input('rarefunc'));
-        // $req->MAC = strtoupper($request->input('MAC'));
-        // $req->campus_id = $request->input('campus');
-        // $req->usuarioTipo_id = $request->input('tipo');
-        // $req->save();
+        $req->nome = strtoupper($request->input('nome'));
+        $req->rarefunc = strtoupper($request->input('rarefunc'));
+        $req->MAC = strtoupper($request->input('MAC'));
+        $req->campus_id = $request->input('campus');
+        $req->usuarioTipo_id = $request->input('tipo');
+        $req->save();
 
-        return back()->with('mensagem','Requisição cadastrada com sucesso!');
+        return back()->with('mensagem',$msg);
     }
 
     public function Apagar(Request $request)
     {
         \App\Requisicoes::find($request->id)->delete();
         return back()->with('mensagem','Registro apagado com sucesso!');
+    }
+
+    public function Cadastrando(Request $request)
+    {
+        $req = \App\Requisicoes::find($request->id);
+        $req->status = '2';
+        $req->save();
     }
 
 }

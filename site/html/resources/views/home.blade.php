@@ -164,6 +164,7 @@
             <td class="centro-total">
               @if ($req->status->status == 'PENDENTE')
               <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="preencheForm(
+                '{{ csrf_token() }}',
                 '{{ $req->id }}',
                 '{{ $req->nome }}',
                 '{{ $req->rarefunc }}',
