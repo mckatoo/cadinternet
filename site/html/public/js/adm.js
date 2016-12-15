@@ -12671,12 +12671,6 @@ $('#ok').on('click', function(){
     $('#lista').load('cadastros/pesquisa/status/3');
 });
 
-$('#btnApagar').on('click', function(){
-	if (confirm('Deseja apagar este registro?')) {
-		$('#formApagarRequisicao').submit();
-	};
-});
-
 // INICIO MASCARAS
 $('#nome').keyup(function() {
     this.value = this.value.replace(/[^\w\.][ ]|\d/g, '');
@@ -12691,22 +12685,7 @@ $('#IP').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
 });
 //FIM MASCARAS
 
-$("#btnNovo").on('click', function(){
-    $("#grupoIP").addClass('hidden');
-    $("#formCadastros")[0].reset();
-});
 
-function preencheForm(token,id,nome,rarefunc,mac,tipo,campus,action){
-    $.post('cadastros/cadastrando',{_token: token,id: id});
-    $("#id").val(id);
-    $("#nome").val(nome);
-    $("#rarefunc").val(rarefunc);
-    $("#MAC").val(mac);
-    $("#grupoIP").removeClass('hidden');
-    $("#selectTipo").val(tipo);
-    $("#selectCampus").val(campus);
-    $("#IP").focus();
-};
 
 setTimeout(function(){
   $('.alert').fadeOut();

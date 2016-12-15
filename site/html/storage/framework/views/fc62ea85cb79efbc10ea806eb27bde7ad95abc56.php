@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<div id="page-wrapper" class="conteudo">
+<div id="page-wrapper" class="conteudo" ng-controller="CadInternetCtrl">
   <div class="row">
     <div class="col-lg-3 col-md-6">
       <div class="panel panel-primary">
@@ -102,7 +102,8 @@
           <?php echo e($titulo); ?>
 
         </h5>
-        <button type="button" data-toggle="modal" data-target="#form" class="btn btn-primary pull-right" id="btnNovo">
+        <button type="button" data-toggle="modal" data-target="#form" class="btn btn-primary pull-right" id="btnNovo" onclick="novo(
+        '<?php echo e(route('cadastros.salvar')); ?>')">
           <i class="fa fa-plus"></i> Novo Cadastro
         </button>
         <?php else: ?>
@@ -162,15 +163,11 @@
             <td class="centro-total"><?php echo e(date('d/m/Y H:i', strtotime($req->created_at))); ?></td>
             <td class="centro-total">
               <?php if($req->status->status == 'PENDENTE'): ?>
-              <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="preencheForm(
+              <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="ativar(
                 '<?php echo e(csrf_token()); ?>',
-                '<?php echo e($req->id); ?>',
-                '<?php echo e($req->nome); ?>',
-                '<?php echo e($req->rarefunc); ?>',
-                '<?php echo e($req->MAC); ?>',
-                '<?php echo e($req->tipo->id); ?>',
-                '<?php echo e($req->campus->id); ?>',
-                'cadastros/atualizar')">
+                '<?php echo e($req); ?>',
+                '<?php echo e(route('cadastros.atualizar')); ?>',
+                '<?php echo e(route('cadastros.cadastrando')); ?>')">
                 <i class="fa fa-save"></i> Ativar
                 <?php endif; ?>
                 <?php if($req->status->status == 'CADASTRANDO'): ?>
@@ -178,7 +175,11 @@
                   <i class="fa fa-save"></i> Ativar
                   <?php endif; ?>
                   <?php if($req->status->status == 'OK'): ?>
-                  <a href="#" class="btn btn-success">
+                  <a href="#" class="btn btn-success" id="btnEditar" data-toggle="modal" data-target="#form" onclick="editar(
+                    '<?php echo e(csrf_token()); ?>',
+                    '<?php echo e($req); ?>',
+                    '<?php echo e(route('cadastros.atualizar')); ?>',
+                    '<?php echo e(route('cadastros.cadastrando')); ?>')">
                     <i class="fa fa-edit"></i> Editar
                     <?php endif; ?>
                   </a>
@@ -188,7 +189,7 @@
                     <?php echo e(csrf_field()); ?>
 
                     <input type="hidden" name="id" value="<?php echo e($req->id); ?>">
-                    <button href="#" class="btn btn btn-danger" id="btnApagarRequisicao">
+                    <button href="#" class="btn btn btn-danger" onclick="apagar()">
                       <i class="fa fa-recycle"></i> Apagar
                     </button>
                   </form>
@@ -212,7 +213,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="">Cadastrar <?php echo e($titulo); ?></h4>
+              <h4 class="modal-title" id=""><?php echo e($titulo); ?></h4>
             </div>
             <div class="modal-body" include="titulo-painel">
               <?php echo $__env->make('../cadastros/form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

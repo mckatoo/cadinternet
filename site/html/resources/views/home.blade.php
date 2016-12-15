@@ -1,7 +1,7 @@
 @extends('layouts.adm')
 
 @section('content')
-<div id="page-wrapper" class="conteudo">
+<div id="page-wrapper" class="conteudo" ng-controller="CadInternetCtrl">
   <div class="row">
     <div class="col-lg-3 col-md-6">
       <div class="panel panel-primary">
@@ -103,7 +103,8 @@
         <h5>
           {{$titulo}}
         </h5>
-        <button type="button" data-toggle="modal" data-target="#form" class="btn btn-primary pull-right" id="btnNovo">
+        <button type="button" data-toggle="modal" data-target="#form" class="btn btn-primary pull-right" id="btnNovo" onclick="novo(
+        '{{ route('cadastros.salvar') }}')">
           <i class="fa fa-plus"></i> Novo Cadastro
         </button>
         @else
@@ -163,15 +164,11 @@
             <td class="centro-total">{{date('d/m/Y H:i', strtotime($req->created_at))}}</td>
             <td class="centro-total">
               @if ($req->status->status == 'PENDENTE')
-              <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="preencheForm(
+              <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="ativar(
                 '{{ csrf_token() }}',
-                '{{ $req->id }}',
-                '{{ $req->nome }}',
-                '{{ $req->rarefunc }}',
-                '{{ $req->MAC }}',
-                '{{ $req->tipo->id }}',
-                '{{ $req->campus->id }}',
-                'cadastros/atualizar')">
+                '{{ $req }}',
+                '{{ route('cadastros.atualizar') }}',
+                '{{ route('cadastros.cadastrando') }}')">
                 <i class="fa fa-save"></i> Ativar
                 @endif
                 @if ($req->status->status == 'CADASTRANDO')
@@ -179,7 +176,11 @@
                   <i class="fa fa-save"></i> Ativar
                   @endif
                   @if ($req->status->status == 'OK')
-                  <a href="#" class="btn btn-success">
+                  <a href="#" class="btn btn-success" id="btnEditar" data-toggle="modal" data-target="#form" onclick="editar(
+                    '{{ csrf_token() }}',
+                    '{{ $req }}',
+                    '{{ route('cadastros.atualizar') }}',
+                    '{{ route('cadastros.cadastrando') }}')">
                     <i class="fa fa-edit"></i> Editar
                     @endif
                   </a>
@@ -188,7 +189,7 @@
                   <form id="#formApagarRequisicao" action=" {{ route('cadastros.apagar') }} " method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $req->id }}">
-                    <button href="#" class="btn btn btn-danger" id="btnApagarRequisicao">
+                    <button href="#" class="btn btn btn-danger" onclick="apagar()">
                       <i class="fa fa-recycle"></i> Apagar
                     </button>
                   </form>
@@ -211,7 +212,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title" id="">Cadastrar {{$titulo}}</h4>
+              <h4 class="modal-title" id="">{{$titulo}}</h4>
             </div>
             <div class="modal-body" include="titulo-painel">
               @include('../cadastros/form')

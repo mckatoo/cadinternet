@@ -1,6 +1,5 @@
-<form class="form-horizontal" id="formCadastros" action="{{ route('cadastros.salvar') }}" method="post">
+<form class="form-horizontal" id="formCadastros" action="" method="post">
   {{csrf_field()}}
-  <input type="hidden" name="tipo" id="tipo" value="{{$titulo}}">
   <input type="hidden" name="id" id="id" value="">
   <div class="form-group">
     <label for="nome" class="col-sm-4 control-label">Nome Completo</label>
@@ -33,7 +32,7 @@
   <div class="form-group">
     <label for="tipo" class="col-sm-4 control-label">Tipo</label>
     <div class="col-sm-8">
-        <select class="form-control" name="tipo" id="selectTipo">
+        <select class="form-control" name="tipo" id="tipo">
             <option value="">SELECIONE...</option>
             @foreach ($tipo as $tp)
                 <option value="{{$tp->id}}">{{$tp->tipo}}</option>
@@ -45,7 +44,7 @@
   <div class="form-group">
     <label for="campus" class="col-sm-4 control-label">Campus</label>
     <div class="col-sm-8">
-        <select class="form-control" name="campus" id="selectCampus">
+        <select class="form-control" name="campus" id="campus">
             <option value="">SELECIONE...</option>
             @foreach ($campus as $cp)
                 <option value="{{$cp->id}}">{{$cp->campus}}</option>
@@ -55,7 +54,7 @@
   </div>
 
   <div class="modal-footer">
-    <button type="reset" id="btnFechar" class="btn btn-default" data-dismiss="modal">Fechar</button>
+    <a href="" id="btnFechar" class="btn btn-default" onclick="fechar">Fechar</a>
     <button type="submit" id="btnPreCadastro" class="btn btn-primary">Cadastrar</button>
   </div>
 </form>

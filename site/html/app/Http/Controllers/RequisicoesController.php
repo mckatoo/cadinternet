@@ -106,14 +106,7 @@ class RequisicoesController extends Controller
 
     public function Salvar(Request $request)
     {
-        if ($request->input('id')!==null) {
-            $req = \App\Requisicoes::find($request->id);
-            $req->IP = $request->input('IP');
-            $msg ='Requisição atualizada com sucesso!';
-        }else{
-            $req = new \App\Requisicoes;
-            $msg ='Requisição cadastrada com sucesso!';
-        }
+        $req = new \App\Requisicoes;
         $req->nome = strtoupper($request->input('nome'));
         $req->rarefunc = strtoupper($request->input('rarefunc'));
         $req->MAC = strtoupper($request->input('MAC'));
@@ -121,19 +114,40 @@ class RequisicoesController extends Controller
         $req->usuarioTipo_id = $request->input('tipo');
         $req->save();
 
-        return back()->with('mensagem',$msg);
+        return back()->with('mensagem','Requisição cadastrada com sucesso!');
+    }
+
+    public function Atualiza(Request $request)
+    {
+        $req = \App\Requisicoes::find($request->id);
+        $req->IP = $request->input('IP');
+        $req->status_id = $request->status;
+        $req->nome = strtoupper($request->nome);
+        $req->rarefunc = strtoupper($request->rarefunc);
+        $req->MAC = strtoupper($request->MAC);
+        $req->campus_id = $request->campus;
+        $req->usuarioTipo_id = $request->tipo;
+        $req->save();
+
+        return back()->with('mensagem','Requisição atualizada com sucesso!');
     }
 
     public function Apagar(Request $request)
     {
         \App\Requisicoes::find($request->id)->delete();
-        return back()->with('mensagem','Registro apagado com sucesso!');
+
+        $urlAnterior=explode('/', back()->getTargetUrl());
+        if ($urlAnterior[4]="pesquisa") {
+            return redirect("/")->with('mensagem','Registro apagado com sucesso!');
+        }else{
+            return back()->with('mensagem','Registro apagado com sucesso!');
+        }
     }
 
     public function Cadastrando(Request $request)
     {
         $req = \App\Requisicoes::find($request->id);
-        $req->status = '2';
+        $req->status_id = $request->input('status');
         $req->save();
     }
 

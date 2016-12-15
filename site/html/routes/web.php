@@ -25,6 +25,7 @@ Route::group(['middleware' => 'web'], function() {
 	    Route::get('/conta/{campo}/{valor}', ['as' => 'conta', 'uses' => 'RequisicoesController@Conta']);
 	    Route::get('/tipo/{tipo}', ['as' => 'tipo', 'uses' => 'RequisicoesController@PorTipo']);
 	    Route::post('/salvar', ['as' => 'salvar', 'uses' => 'RequisicoesController@Salvar']);
+	    Route::post('/atualizar', ['as' => 'atualizar', 'uses' => 'RequisicoesController@Atualiza']);
 	    Route::post('/apagar', ['as' => 'apagar', 'uses' => 'RequisicoesController@Apagar']);
 	    Route::post('/pesquisa/', ['as' => 'pesquisa', 'uses' => 'RequisicoesController@Pesquisa']);
 	    Route::post('/cadastrando/', ['as' => 'cadastrando', 'uses' => 'RequisicoesController@Cadastrando']);

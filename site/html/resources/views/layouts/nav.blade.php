@@ -16,7 +16,7 @@
                 <i class="fa fa-user fa-fw"></i> | {{Auth::user()->name}} <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="{{ route('auth.registro') }}"><i class="fa fa-user fa-fw"></i> Cadastrar Administradores</a>
+                <li><a href="{{ route('auth.registro') }}"><i class="fa fa-user fa-fw"></i> Cadastrar Usuário</a>
                 </li>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Mudar Senha</a>
                 </li>
