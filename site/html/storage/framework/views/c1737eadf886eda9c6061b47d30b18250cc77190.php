@@ -18,7 +18,7 @@
 
                         <fieldset>
                             <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
-                                <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
+                                <input id="email" placeholder="SEU ENDEREÇO DE EMAIL" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
 
                                 <?php if($errors->has('email')): ?>
                                     <span class="help-block">

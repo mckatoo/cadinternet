@@ -127,12 +127,16 @@
         <thead>
           <tr>
             <th>Nome</th>
-            <th>RA RE Funcional</th>
+            <th>RA ou Funcional</th>
             <th>Campus</th>
             <th>Status</th>
             <th>Tipo</th>
             <th>Cadastrado em</th>
-            <th></th>
+            <?php if(Auth::user()->tipo->tipo === "ADMINISTRADOR"): ?>
+            <td class="centro-total">
+            <?php else: ?>
+            <td class="centro-total hidden">
+            <?php endif; ?>
             <th></th>
           </tr>
         </thead>
@@ -161,37 +165,57 @@
             </td>
             <td class="centro-total"><?php echo e($req->tipo->tipo); ?></td>
             <td class="centro-total"><?php echo e(date('d/m/Y H:i', strtotime($req->created_at))); ?></td>
+            
+            <?php if(Auth::user()->tipo->tipo === "ADMINISTRADOR"): ?>
             <td class="centro-total">
+            <?php else: ?>
+            <td class="centro-total hidden">
+            <?php endif; ?>
+
               <?php if($req->status->status == 'PENDENTE'): ?>
-              <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="ativar(
-                '<?php echo e(csrf_token()); ?>',
-                '<?php echo e($req); ?>',
-                '<?php echo e(route('cadastros.atualizar')); ?>',
-                '<?php echo e(route('cadastros.cadastrando')); ?>')">
-                <i class="fa fa-save"></i> Ativar
-                <?php endif; ?>
-                <?php if($req->status->status == 'CADASTRANDO'): ?>
+                <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="ativar(
+                    '<?php echo e($req->id); ?>',
+                    '<?php echo e($req->nome); ?>',
+                    '<?php echo e($req->rarefunc); ?>',
+                    '<?php echo e($req->MAC); ?>',
+                    '<?php echo e($req->usuarioTipo_id); ?>',
+                    '<?php echo e($req->campus_id); ?>',
+                    '<?php echo e(route('cadastros.atualizar')); ?>',
+                    '<?php echo e(route('cadastros.cadastrando')); ?>'
+                  )">
+                  <i class="fa fa-save"></i> Ativar
+                </a>
+              <?php endif; ?>
+                
+              <?php if($req->status->status == 'CADASTRANDO'): ?>
                 <a href="#" class="btn btn-success disabled">
                   <i class="fa fa-save"></i> Ativar
-                  <?php endif; ?>
-                  <?php if($req->status->status == 'OK'): ?>
-                  <a href="#" class="btn btn-success" id="btnEditar" data-toggle="modal" data-target="#form" onclick="editar(
-                    '<?php echo e(csrf_token()); ?>',
-                    '<?php echo e($req); ?>',
-                    '<?php echo e(route('cadastros.atualizar')); ?>',
-                    '<?php echo e(route('cadastros.cadastrando')); ?>')">
-                    <i class="fa fa-edit"></i> Editar
-                    <?php endif; ?>
-                  </a>
+                </a>
+              <?php endif; ?>
+              
+              <?php if($req->status->status == 'OK'): ?>
+                <a href="#" class="btn btn-success" id="btnEditar" data-toggle="modal" data-target="#form" onclick="editar(
+                '<?php echo e($req->id); ?>',
+                '<?php echo e($req->nome); ?>',
+                '<?php echo e($req->rarefunc); ?>',
+                '<?php echo e($req->IP); ?>',
+                '<?php echo e($req->MAC); ?>',
+                '<?php echo e($req->usuarioTipo_id); ?>',
+                '<?php echo e($req->campus_id); ?>',
+                '<?php echo e(route('cadastros.atualizar')); ?>',
+                '<?php echo e(route('cadastros.cadastrando')); ?>'
+              )">
+                <i class="fa fa-edit"></i> Editar
+                </a>
+              <?php endif; ?>
                 </td>
                 <td class="centro-total">
-                  <form id="#formApagarRequisicao" action=" <?php echo e(route('cadastros.apagar')); ?> " method="post">
-                    <?php echo e(csrf_field()); ?>
-
-                    <input type="hidden" name="id" value="<?php echo e($req->id); ?>">
-                    <button href="#" class="btn btn btn-danger" onclick="apagar()">
-                      <i class="fa fa-recycle"></i> Apagar
-                    </button>
+                    <a href="#" class="btn btn btn-danger" onclick="apagar(
+                      '<?php echo e(route('cadastros.apagar')); ?>',
+                      '<?php echo e($req->id); ?>'
+                    )">
+                    <i class="fa fa-recycle"></i> Apagar
+                    </a>
                   </form>
                 </td>
               </tr>

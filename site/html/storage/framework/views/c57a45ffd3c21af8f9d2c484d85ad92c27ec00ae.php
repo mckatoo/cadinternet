@@ -16,8 +16,10 @@
                 <i class="fa fa-user fa-fw"></i> | <?php echo e(Auth::user()->name); ?> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="<?php echo e(route('auth.registro')); ?>"><i class="fa fa-user fa-fw"></i> Cadastrar Usuário</a>
-                </li>
+                <?php if(Auth::user()->tipo->tipo == "ADMINISTRADOR"): ?>
+                    <li><a href="<?php echo e(route('auth.registro')); ?>"><i class="fa fa-user fa-fw"></i> Cadastrar Usuário</a>
+                    </li>
+                <?php endif; ?>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Mudar Senha</a>
                 </li>
                 <li class="divider"></li>

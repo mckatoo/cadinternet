@@ -9,7 +9,7 @@
   </div>
 
   <div class="form-group">
-    <label for="rarefunc" class="col-sm-4 control-label">RA RE ou Funcional</label>
+    <label for="rarefunc" class="col-sm-4 control-label">RA ou Funcional</label>
     <div class="col-sm-8">
         <input type="text" class="form-control" id="rarefunc" name="rarefunc">
     </div>
@@ -54,7 +54,7 @@
   </div>
 
   <div class="modal-footer">
-    <a href="" id="btnFechar" class="btn btn-default" onclick="fechar">Fechar</a>
+    <div class="btn btn-default" onclick="fechar('{{ route('cadastros.cadastrando') }}')">Fechar</div>
     <button type="submit" id="btnPreCadastro" class="btn btn-primary">Cadastrar</button>
   </div>
 </form>

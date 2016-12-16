@@ -29,10 +29,6 @@ elixir(function(mix) {
       './resources/assets/js/milton.js',
     ], 'public/js/adm.js'),
     mix.scripts([
-      './node_modules/angular/angular.js',
-      './resources/assets/js/app.js',
-    ], 'public/js/angular-app.js'),
-    mix.scripts([
       './node_modules/jquery/dist/jquery.js',
       './resources/assets/jquery/jquery.mask.min.js',
       './node_modules/bootstrap/dist/js/bootstrap.js',
@@ -43,7 +39,6 @@ elixir(function(mix) {
       "css/app.css",
       "js/app.js",
       "css/adm.css",
-      "js/adm.js",
-      "js/angular-app.js"
+      "js/adm.js"
     ]);
 });

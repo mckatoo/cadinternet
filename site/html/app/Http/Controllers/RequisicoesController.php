@@ -147,8 +147,10 @@ class RequisicoesController extends Controller
     public function Cadastrando(Request $request)
     {
         $req = \App\Requisicoes::find($request->id);
-        $req->status_id = $request->input('status');
-        $req->save();
+        if ($req->status_id < 3) {
+            $req->status_id = $request->input('status');
+            $req->save();
+        }
     }
 
 }

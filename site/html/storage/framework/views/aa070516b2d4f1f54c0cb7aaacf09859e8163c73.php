@@ -47,7 +47,6 @@
 
     <!-- JAVASCRIPT COMPILADO PELO GULP -->
     <script src="<?php echo e(elixir('js/adm.js')); ?>"></script>
-    <script src="<?php echo e(elixir('js/angular-app.js')); ?>"></script>
 
 </body>
 

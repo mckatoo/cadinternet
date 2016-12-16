@@ -128,12 +128,16 @@
         <thead>
           <tr>
             <th>Nome</th>
-            <th>RA RE Funcional</th>
+            <th>RA ou Funcional</th>
             <th>Campus</th>
             <th>Status</th>
             <th>Tipo</th>
             <th>Cadastrado em</th>
-            <th></th>
+            @if (Auth::user()->tipo->tipo === "ADMINISTRADOR")
+            <td class="centro-total">
+            @else
+            <td class="centro-total hidden">
+            @endif
             <th></th>
           </tr>
         </thead>
@@ -162,36 +166,57 @@
             </td>
             <td class="centro-total">{{$req->tipo->tipo}}</td>
             <td class="centro-total">{{date('d/m/Y H:i', strtotime($req->created_at))}}</td>
+            
+            @if (Auth::user()->tipo->tipo === "ADMINISTRADOR")
             <td class="centro-total">
+            @else
+            <td class="centro-total hidden">
+            @endif
+
               @if ($req->status->status == 'PENDENTE')
-              <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="ativar(
-                '{{ csrf_token() }}',
-                '{{ $req }}',
-                '{{ route('cadastros.atualizar') }}',
-                '{{ route('cadastros.cadastrando') }}')">
-                <i class="fa fa-save"></i> Ativar
-                @endif
-                @if ($req->status->status == 'CADASTRANDO')
+                <a href="#" class="btn btn-primary" id="btnAtivar" data-toggle="modal" data-target="#form" onclick="ativar(
+                    '{{ $req->id }}',
+                    '{{ $req->nome }}',
+                    '{{ $req->rarefunc }}',
+                    '{{ $req->MAC }}',
+                    '{{ $req->usuarioTipo_id }}',
+                    '{{ $req->campus_id }}',
+                    '{{ route('cadastros.atualizar') }}',
+                    '{{ route('cadastros.cadastrando') }}'
+                  )">
+                  <i class="fa fa-save"></i> Ativar
+                </a>
+              @endif
+                
+              @if ($req->status->status == 'CADASTRANDO')
                 <a href="#" class="btn btn-success disabled">
                   <i class="fa fa-save"></i> Ativar
-                  @endif
-                  @if ($req->status->status == 'OK')
-                  <a href="#" class="btn btn-success" id="btnEditar" data-toggle="modal" data-target="#form" onclick="editar(
-                    '{{ csrf_token() }}',
-                    '{{ $req }}',
-                    '{{ route('cadastros.atualizar') }}',
-                    '{{ route('cadastros.cadastrando') }}')">
-                    <i class="fa fa-edit"></i> Editar
-                    @endif
-                  </a>
+                </a>
+              @endif
+              
+              @if ($req->status->status == 'OK')
+                <a href="#" class="btn btn-success" id="btnEditar" data-toggle="modal" data-target="#form" onclick="editar(
+                '{{ $req->id }}',
+                '{{ $req->nome }}',
+                '{{ $req->rarefunc }}',
+                '{{ $req->IP }}',
+                '{{ $req->MAC }}',
+                '{{ $req->usuarioTipo_id }}',
+                '{{ $req->campus_id }}',
+                '{{ route('cadastros.atualizar') }}',
+                '{{ route('cadastros.cadastrando') }}'
+              )">
+                <i class="fa fa-edit"></i> Editar
+                </a>
+              @endif
                 </td>
                 <td class="centro-total">
-                  <form id="#formApagarRequisicao" action=" {{ route('cadastros.apagar') }} " method="post">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $req->id }}">
-                    <button href="#" class="btn btn btn-danger" onclick="apagar()">
-                      <i class="fa fa-recycle"></i> Apagar
-                    </button>
+                    <a href="#" class="btn btn btn-danger" onclick="apagar(
+                      '{{ route('cadastros.apagar') }}',
+                      '{{ $req->id }}'
+                    )">
+                    <i class="fa fa-recycle"></i> Apagar
+                    </a>
                   </form>
                 </td>
               </tr>
