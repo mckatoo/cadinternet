@@ -60,6 +60,7 @@ function editar(id,nome,rarefunc,ip,mac,tipo,campus,url,cadastrando){
     $("#grupoIP").removeClass('hidden');
     $("#tipo").val(tipo);
     $("#campus").val(campus);
+    $("#IP").attr('required','required');
     $("#IP").val(ip);
 };
 

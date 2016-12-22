@@ -199,7 +199,7 @@
                 '{{ $req->id }}',
                 '{{ $req->nome }}',
                 '{{ $req->rarefunc }}',
-                '{{ $req->IP }}',
+                '{{ $req->ip }}',
                 '{{ $req->MAC }}',
                 '{{ $req->usuarioTipo_id }}',
                 '{{ $req->campus_id }}',

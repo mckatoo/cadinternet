@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $titulo = 'Cadastros Pendentes';
-        $requisicoes = \App\Requisicoes::where('status_id', '1')->paginate(5);
+        $requisicoes = \App\Requisicoes::where('status_id', '1')->orderBy('created_at','desc')->paginate(5);
         $conta = [
             "OK" => \App\Requisicoes::where('status_id','3')->count(),
             "CADASTRANDO" => \App\Requisicoes::where('status_id','2')->count(),
