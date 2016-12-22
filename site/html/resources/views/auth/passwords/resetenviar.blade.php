@@ -15,6 +15,9 @@
                             <strong>{{ $erro }}</strong> 
                         </div>
                     @endif
+                    @if (session('erro')!==null)
+                      <div class="alert alert-danger">{{session('erro')}}</div>
+                    @endif
                     <form role="form" method="POST" action="{{ url('enviar/reset') }}">
                         {{ csrf_field() }}
                         <fieldset>

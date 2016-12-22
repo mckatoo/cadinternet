@@ -12685,16 +12685,16 @@ $('#IP').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
 });
 //FIM MASCARAS
 
-
 function apagar(url,id){
     if (confirm('Deseja apagar este registro?')) {
-	    $.post(url,{_token: $("#token").val(),id: id});
-	    location.reload();
+        $.post(url,{_token: $("#token").val(),id: id});
+        location.reload();
     };
 };
 
 
 function novo(url){
+    $("#IP").removeAttr('required','required');
     $("#grupoIP").addClass('hidden');
     $("#formCadastros").attr('action',url);
     $("#formCadastros")[0].reset();
@@ -12712,6 +12712,7 @@ function ativar(id,nome,rarefunc,mac,tipo,campus,url,status){
     $("#grupoIP").removeClass('hidden');
     $("#tipo").val(tipo);
     $("#campus").val(campus);
+    $("#IP").attr('required','required');
 };
 
 

@@ -4,14 +4,14 @@
   <div class="form-group">
     <label for="nome" class="col-sm-4 control-label">Nome Completo</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="nome" name="nome" autofocus>
+        <input type="text" class="form-control" required id="nome" name="nome" autofocus>
     </div>
   </div>
 
   <div class="form-group">
     <label for="rarefunc" class="col-sm-4 control-label">RA ou Funcional</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="rarefunc" name="rarefunc">
+        <input type="text" class="form-control" required id="rarefunc" name="rarefunc">
     </div>
   </div>
 
@@ -25,14 +25,14 @@
   <div class="form-group">
     <label for="MAC" class="col-sm-4 control-label">Endereço MAC</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control" id="MAC" name="MAC">
+        <input type="text" class="form-control" required id="MAC" name="MAC">
     </div>
   </div>
 
   <div class="form-group">
     <label for="tipo" class="col-sm-4 control-label">Tipo</label>
     <div class="col-sm-8">
-        <select class="form-control" name="tipo" id="tipo">
+        <select class="form-control" required name="tipo" id="tipo">
             <option value="">SELECIONE...</option>
             @foreach ($tipo as $tp)
                 <option value="{{$tp->id}}">{{$tp->tipo}}</option>
@@ -44,7 +44,7 @@
   <div class="form-group">
     <label for="campus" class="col-sm-4 control-label">Campus</label>
     <div class="col-sm-8">
-        <select class="form-control" name="campus" id="campus">
+        <select class="form-control" required name="campus" id="campus">
             <option value="">SELECIONE...</option>
             @foreach ($campus as $cp)
                 <option value="{{$cp->id}}">{{$cp->campus}}</option>

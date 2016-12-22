@@ -23,9 +23,9 @@ class RequisicoesController extends Controller
             $requisicoes = \App\Requisicoes::with('campus','status','tipo')
             ->where('nome','like','%'.$palavra.'%')
             ->orWhere('rarefunc','like','%'.$palavra.'%')
-            ->paginate(5);
+            ->paginate(10);
         } else {
-            $requisicoes = \App\Requisicoes::with('campus','status','tipo')->paginate(5);
+            $requisicoes = \App\Requisicoes::with('campus','status','tipo')->paginate(10);
         }
         $campus=\App\Campus::get();
         $tipo=\App\UsuarioTipo::get();
@@ -57,10 +57,10 @@ class RequisicoesController extends Controller
                 break;
         }
         if ($status_id == null) {
-            $requisicoes = \App\Requisicoes::orderBy('created_at')->paginate(5);
+            $requisicoes = \App\Requisicoes::orderBy('created_at')->paginate(10);
             // $requisicoes = \App\Requisicoes::orderBy('created_at')->get();
         } else {
-            $requisicoes = \App\Requisicoes::where('status_id', $status_id)->orderBy('created_at')->paginate(5);
+            $requisicoes = \App\Requisicoes::where('status_id', $status_id)->orderBy('created_at')->paginate(10);
             // $requisicoes = \App\Requisicoes::where('status_id', $status_id)->orderBy('created_at')->get();
         }
         $active='active';
@@ -93,9 +93,9 @@ class RequisicoesController extends Controller
                 break;
         }
         if ($tipo == null) {
-            $requisicoes = \App\Requisicoes::orderBy('created_at')->paginate(5);
+            $requisicoes = \App\Requisicoes::orderBy('created_at')->paginate(10);
         } else {
-            $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tipo)->orderBy('created_at')->paginate(5);
+            $requisicoes = \App\Requisicoes::where('usuarioTipo_id', $tipo)->orderBy('created_at')->paginate(10);
         }
 
         $campus = \App\Campus::get();
@@ -104,7 +104,7 @@ class RequisicoesController extends Controller
         return view('home',compact('requisicoes','titulo','campus','conta','tipo'));
     }
 
-    public function Salvar(Request $request)
+    public function Salvar(RequisicoesRequest $request)
     {
         $req = new \App\Requisicoes;
         $req->nome = strtoupper($request->input('nome'));
@@ -117,16 +117,16 @@ class RequisicoesController extends Controller
         return back()->with('mensagem','Requisição cadastrada com sucesso!');
     }
 
-    public function Atualiza(Request $request)
+    public function Atualiza(RequisicoesAtualizarRequest $request)
     {
         $req = \App\Requisicoes::find($request->id);
-        $req->IP = $request->input('IP');
-        $req->status_id = $request->status;
         $req->nome = strtoupper($request->nome);
         $req->rarefunc = strtoupper($request->rarefunc);
+        $req->IP = $request->input('IP');
         $req->MAC = strtoupper($request->MAC);
-        $req->campus_id = $request->campus;
         $req->usuarioTipo_id = $request->tipo;
+        $req->campus_id = $request->campus;
+        $req->status_id = 3;
         $req->save();
 
         return back()->with('mensagem','Requisição atualizada com sucesso!');

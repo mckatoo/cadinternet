@@ -25,16 +25,22 @@ class MailController extends Controller
 	     * @param  int  $orderId
 	     * @return Response
 	     */
-    	\App\PasswordResets::where('email',$request->input('email'))->delete();
+    	if (\App\User::where('email',$request->email)->count() === 1) {
+	    	\App\PasswordResets::where('email',$request->input('email'))->delete();
 
-		$passwordreset = new \App\PasswordResets();
-		$passwordreset->email = $request->email;
-		$passwordreset->token = $request->_token;
-		$passwordreset->save();
+			$passwordreset = new \App\PasswordResets();
+			$passwordreset->email = $request->email;
+			$passwordreset->token = $request->_token;
+			$passwordreset->save();
 
-        Mail::to($request->input('email'))
-        	->send(new ResetSenhas($request));
+	        Mail::to($request->input('email'))
+	        	->send(new ResetSenhas($request));
 
-    	return view('auth.login', ['sucesso' => 'Email enviado com sucesso!']);
+	    	return view('auth.login', ['sucesso' => 'Email enviado com sucesso!']);
+    	} else {
+    		return back()->with('erro','Email não encontrado!');
+    	}
+
+
     }
 }
